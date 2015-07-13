@@ -8,12 +8,17 @@ using TerrariaApi.Server;
 using System.Windows.Forms;
 using System.Threading;
 using System.Runtime.InteropServices;
+using TShockAPI.Hooks;
+using TSGui.Extensions;
 
 namespace TSGui
 {
-    [ApiVersion(1, 17)]
-    public class tsGui : TerrariaPlugin
+    [ApiVersion(1, 19)]
+    public class main : TerrariaPlugin
     {
+        public static TaskReader ConsoleInput;
+
+
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
 
@@ -42,37 +47,39 @@ namespace TSGui
 
         public override void Initialize()
         {
-            ServerApi.Hooks.GamePostInitialize.Register(this, PostInitialize);
+            LaunchInterface();
+            //ServerApi.Hooks.GamePostInitialize.Register(this, PostInitialize);
         }
 
         private void PostInitialize(EventArgs e)
         {
-            LaunchInterface();
+           // LaunchInterface();
         }
 
         public void LaunchInterface()
         {
             Thread t = new Thread(() =>
             {
-                Form1 form = new Form1();
+                Gui gui = new Gui();
                 try
                 {
-                    //add hooks
-                    SetConsoleState(SW_HIDE);
-                    form.ShowDialog();
+                    ServerApi.Hooks.ServerJoin.Register(this, gui.ServerJoin);
+                    ServerApi.Hooks.ServerLeave.Register(this, gui.ServerLeave);
+                    main.SetConsoleState(main.SW_HIDE);
+                    
+                    gui.ShowDialog();                                   
                 }
                 catch (Exception ex)
                 {
-                    TShock.Log.ConsoleError("window closed because it crashed: " + ex.ToString());
+                    TShock.Log.ConsoleError("TSGui closed because it crashed: " + ex.ToString());
                 }
-                //remove hooks
                 Environment.Exit(0);
             });
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
         }
 
-        public void SetConsoleState(int i)
+        public static void SetConsoleState(int i)
         {
             var handle = GetConsoleWindow();
             ShowWindow(handle, i);
@@ -86,10 +93,10 @@ namespace TSGui
             base.Dispose(disposing);
         }
 
-        public tsGui(Main game)
+        public main(Main game)
             : base(game)
         {
-            Order = 1;
+            Order = 0;
         }
     }
 }
