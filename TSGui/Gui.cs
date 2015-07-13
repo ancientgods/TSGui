@@ -24,6 +24,7 @@ namespace TSGui
 
         private void Gui_Load(object sender, EventArgs e)
         {
+            
             bool HackyWorkAround = true;
             Process p = Process.GetCurrentProcess();
 
@@ -79,8 +80,8 @@ namespace TSGui
         {
             listBox1.MainThreadInvoke(() =>
                 {
-                    listBox1.Items.Clear();
-                    listBox1.Items.AddRange((from tsplr in TShock.Players where tsplr != null select tsplr.Name).ToArray());
+                    listBox1.Clear();
+                    listBox1.AddRange((from tsplr in TShock.Players where tsplr != null select tsplr.Name).ToArray());
                 });
         }
 
@@ -88,8 +89,8 @@ namespace TSGui
         {
             listBox1.MainThreadInvoke(() =>
             {
-                listBox1.Items.Clear();
-                listBox1.Items.AddRange((from tsplr in TShock.Players where tsplr != null select tsplr.Name).ToArray());
+                listBox1.Clear();
+                listBox1.AddRange((from tsplr in TShock.Players where tsplr != null select tsplr.Name).ToArray());
             });
             if (TShock.Utils.ActivePlayers() == 1)
             {
@@ -110,6 +111,6 @@ namespace TSGui
                 this.Text = Utils.GetTitle(false);
             }
         }
-        #endregion Hooks
+        #endregion Hooks       
     }
 }

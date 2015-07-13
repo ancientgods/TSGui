@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{BCC2ADEB-051A-4083-BFA5-7479A2C9FC23}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>FlatUIControls</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="magnusi\FlatAlertBox.cs" />
+    <Compile Include="magnusi\FlatButton.cs" />
+    <Compile Include="magnusi\FlatCheckBox.cs" />
+    <Compile Include="magnusi\FlatClose.cs" />
+    <Compile Include="magnusi\FlatColorPalette.cs" />
+    <Compile Include="magnusi\FlatComboBox.cs" />
+    <Compile Include="magnusi\FlatContextMenuStrip.cs" />
+    <Compile Include="magnusi\FlatGroupBox.cs" />
+    <Compile Include="magnusi\FlatLabel.cs" />
+    <Compile Include="magnusi\FlatListBox.cs" />
+    <Compile Include="magnusi\FlatMax.cs" />
+    <Compile Include="magnusi\FlatMini.cs" />
+    <Compile Include="magnusi\FlatNumeric.cs" />
+    <Compile Include="magnusi\FlatProgressBar.cs" />
+    <Compile Include="magnusi\FlatStatusBar.cs" />
+    <Compile Include="magnusi\FlatStickyButton.cs" />
+    <Compile Include="magnusi\FlatTabControl.cs" />
+    <Compile Include="magnusi\FlatTextBox.cs" />
+    <Compile Include="magnusi\FlatToggle.cs" />
+    <Compile Include="magnusi\FlatTrackBar.cs" />
+    <Compile Include="magnusi\FlatTreeView.cs" />
+    <Compile Include="magnusi\FormSkin.cs" />
+    <Compile Include="magnusi\Helpers.cs" />
+    <Compile Include="magnusi\MouseState.cs" />
+    <Compile Include="magnusi\RadioButton.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="magnusi\Resources.resources" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
