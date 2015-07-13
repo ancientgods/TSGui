@@ -89,7 +89,7 @@ namespace TSGui
             listBox1.MainThreadInvoke(() =>
             {
                 listBox1.Items.Clear();
-                listBox1.Items.AddRange((from tsplr in TShock.Players where tsplr != null select tsplr.Name).ToArray());
+                listBox1.Items.AddRange((from tsplr in TShock.Players where tsplr != null && tsplr.Index != e.Who select tsplr.Name).ToArray());
             });
             if (TShock.Utils.ActivePlayers() == 1)
             {
@@ -111,5 +111,20 @@ namespace TSGui
             }
         }
         #endregion Hooks
+
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            UserOptions options = new UserOptions();
+            ListBox lb = (sender as ListBox);
+
+            List<TSPlayer> tsplrs = TShock.Utils.FindPlayer(lb.Items[lb.SelectedIndex].ToString());
+
+            if (tsplrs.Count == 0)
+                return;
+
+            options.TSPlayer = tsplrs[0];
+            options.ShowDialog();
+        }
     }
 }
