@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
 using TShockAPI;
 using Terraria;
-using System.Timers;
 using TerrariaApi.Server;
-using System.Windows.Forms;
 using System.Threading;
 using System.Runtime.InteropServices;
-using TShockAPI.Hooks;
 using TSGui.Extensions;
 
 namespace TSGui
@@ -17,7 +13,6 @@ namespace TSGui
     public class main : TerrariaPlugin
     {
         public static TaskReader ConsoleInput;
-
 
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
@@ -42,18 +37,13 @@ namespace TSGui
 
         public override string Description
         {
-            get { return ""; }
+            get { return "My code works, and I know why! :)"; }
         }
 
         public override void Initialize()
         {
+            main.SetConsoleState(SW_HIDE);
             LaunchInterface();
-            //ServerApi.Hooks.GamePostInitialize.Register(this, PostInitialize);
-        }
-
-        private void PostInitialize(EventArgs e)
-        {
-           // LaunchInterface();
         }
 
         public void LaunchInterface()
@@ -65,8 +55,8 @@ namespace TSGui
                 {
                     ServerApi.Hooks.ServerJoin.Register(this, gui.ServerJoin);
                     ServerApi.Hooks.ServerLeave.Register(this, gui.ServerLeave);
-                    main.SetConsoleState(main.SW_HIDE);
-                    
+                    ServerApi.Hooks.GameUpdate.Register(this, gui.OnUpdate);
+                    ServerApi.Hooks.GamePostInitialize.Register(this, gui.OnPostInit);
                     gui.ShowDialog();                                   
                 }
                 catch (Exception ex)
@@ -81,8 +71,7 @@ namespace TSGui
 
         public static void SetConsoleState(int i)
         {
-            var handle = GetConsoleWindow();
-            ShowWindow(handle, i);
+            ShowWindow(GetConsoleWindow(), i);
         }
 
         protected override void Dispose(bool disposing)

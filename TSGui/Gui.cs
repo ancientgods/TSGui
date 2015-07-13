@@ -22,33 +22,10 @@ namespace TSGui
             InitializeComponent();
         }
 
-        public void ServerJoin(JoinEventArgs e)
-        {
-            this.Text = Console.Title;
-        }
-
-        public void ServerLeave(LeaveEventArgs e)
-        {
-            this.Text = Console.Title;
-        }
-
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                TextBox tb = (sender as TextBox);
-
-                main.ConsoleInput.SendText(tb.Text);
-                tb.Clear();
-            }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void Gui_Load(object sender, EventArgs e)
         {
             bool HackyWorkAround = true;
             Process p = Process.GetCurrentProcess();
-
 
             textBox1.ForeColor = System.Drawing.Color.FromArgb(Convert.ToByte(TShock.Config.BroadcastRGB[0]), Convert.ToByte(TShock.Config.BroadcastRGB[1]), Convert.ToByte(TShock.Config.BroadcastRGB[2]));
 
@@ -70,8 +47,8 @@ namespace TSGui
                                 }
                                 richTextBox1.Clear();
                             });
+                        this.Text = Console.Title;
                     }
-
                     richTextBox1.MainThreadInvoke(() =>
                     {
                         richTextBox1.Append(s, Console.ForegroundColor);
@@ -83,7 +60,56 @@ namespace TSGui
             main.ConsoleInput = new TaskReader(Console.In);
             Console.SetOut(new TaskWriter(Console.Out, WriteToTextbox));
             Console.SetIn(main.ConsoleInput);
-            this.Text = Console.Title;
         }
+        private void InputBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                TextBox tb = (sender as TextBox);
+
+                main.ConsoleInput.SendText(tb.Text);
+                tb.Clear();
+            }
+        }
+
+
+        #region Hooks
+        public void ServerJoin(JoinEventArgs e)
+        {
+            listBox1.MainThreadInvoke(() =>
+                {
+                    listBox1.Items.Clear();
+                    listBox1.Items.AddRange((from tsplr in TShock.Players where tsplr != null select tsplr.Name).ToArray());
+                });
+        }
+
+        public void ServerLeave(LeaveEventArgs e)
+        {
+            listBox1.MainThreadInvoke(() =>
+            {
+                listBox1.Items.Clear();
+                listBox1.Items.AddRange((from tsplr in TShock.Players where tsplr != null select tsplr.Name).ToArray());
+            });
+            if (TShock.Utils.ActivePlayers() == 1)
+            {
+                this.Text = Utils.GetTitle(true);
+            }
+        }
+
+        public void OnPostInit(EventArgs e)
+        {
+            this.Text = Utils.GetTitle(false);
+        }
+
+        DateTime LastCheck = DateTime.UtcNow;
+        public void OnUpdate(EventArgs e)
+        {
+            if ((DateTime.UtcNow - LastCheck).TotalSeconds >= 1)
+            {
+                this.Text = Utils.GetTitle(false);
+            }
+        }
+        #endregion Hooks
     }
 }

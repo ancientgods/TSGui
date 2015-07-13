@@ -12,14 +12,11 @@ namespace TSGui.Extensions
         public static void MainThreadInvoke(this Control control, Action func)
         {
             if (control.InvokeRequired)
-            {
                 control.Invoke(func);
-            }
             else
-            {
                 func();
-            }
         }
+
         public static void Append(this RichTextBox rtb, string text)
         {
             Append(rtb, text, Convert.ToByte(TShock.Config.BroadcastRGB[0]), Convert.ToByte(TShock.Config.BroadcastRGB[1]), Convert.ToByte(TShock.Config.BroadcastRGB[2]));
@@ -33,9 +30,7 @@ namespace TSGui.Extensions
         public static void Append(this RichTextBox rtb, string text, ConsoleColor c)
         {
             System.Drawing.Color systemColor = System.Drawing.Color.FromName(c.ToString());
-            rtb.SelectionColor = systemColor;
-            rtb.AppendText(text + "\r\n");
-            rtb.ScrollToCaret();
+            Append(rtb, text, systemColor);
         }
 
         public static void Append(this RichTextBox rtb, string text, System.Drawing.Color c)
