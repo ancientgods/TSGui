@@ -22,7 +22,7 @@ namespace TSGui
         private void UserOptions_Load(object sender, EventArgs e)
         {
             this.Text = TSPlayer.Name;
-            Label_Account.Text = TSPlayer.UserAccountName;
+            Label_Account.Text = TSPlayer.Name;
             Label_Group.Text = TSPlayer.Group.Name;
             Label_Ip.Text = TSPlayer.IP;
         }

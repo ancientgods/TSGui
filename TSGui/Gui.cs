@@ -11,6 +11,7 @@ using TShockAPI;
 using Terraria;
 using TerrariaApi.Server;
 using TSGui.Extensions;
+using magnusi;
 
 
 namespace TSGui
@@ -61,17 +62,17 @@ namespace TSGui
             Console.SetOut(new TaskWriter(Console.Out, WriteToTextbox));
             Console.SetIn(main.ConsoleInput);
         }
-        private void InputBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                TextBox tb = (sender as TextBox);
+        //private void InputBox_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyData == Keys.Enter)
+        //    {
+        //        e.SuppressKeyPress = true;
+        //        TextBox tb = (sender as TextBox);
 
-                main.ConsoleInput.SendText(tb.Text);
-                tb.Clear();
-            }
-        }
+        //        main.ConsoleInput.SendText(tb.Text);
+        //        tb.Clear();
+        //    }
+        //}
 
 
         #region Hooks
@@ -79,8 +80,8 @@ namespace TSGui
         {
             listBox1.MainThreadInvoke(() =>
                 {
-                    listBox1.Items.Clear();
-                    listBox1.Items.AddRange((from tsplr in TShock.Players where tsplr != null select tsplr.Name).ToArray());
+                    listBox1.Clear();
+                    listBox1.AddRange((from tsplr in TShock.Players where tsplr != null select tsplr.Name).ToArray());
                 });
         }
 
@@ -88,8 +89,8 @@ namespace TSGui
         {
             listBox1.MainThreadInvoke(() =>
             {
-                listBox1.Items.Clear();
-                listBox1.Items.AddRange((from tsplr in TShock.Players where tsplr != null && tsplr.Index != e.Who select tsplr.Name).ToArray());
+                listBox1.Clear();
+                listBox1.AddRange((from tsplr in TShock.Players where tsplr != null && tsplr.Index != e.Who select tsplr.Name).ToArray());
             });
             if (TShock.Utils.ActivePlayers() == 1)
             {
@@ -125,6 +126,23 @@ namespace TSGui
 
             options.TSPlayer = tsplrs[0];
             options.ShowDialog();
+        }
+
+        private void flatClose1_Click(object sender, EventArgs e)
+        {
+            Form1 CloseDialog = new Form1();
+            CloseDialog.ShowDialog();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                FlatTextBox tb = (sender as FlatTextBox);
+
+                main.ConsoleInput.SendText(tb.Text);
+                tb.Text = "";
+            }
         }
     }
 }
