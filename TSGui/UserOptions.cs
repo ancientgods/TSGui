@@ -21,8 +21,9 @@ namespace TSGui
 
         private void UserOptions_Load(object sender, EventArgs e)
         {
-            this.Text = TSPlayer.Name;
-            Label_Account.Text = TSPlayer.UserAccountName;
+            this.formSkin1.Text = TSPlayer.Name;
+            this.formSkin1.Invalidate();
+            Label_Account.Text = TSPlayer.Name;
             Label_Group.Text = TSPlayer.Group.Name;
             Label_Ip.Text = TSPlayer.IP;
         }
@@ -36,6 +37,12 @@ namespace TSGui
         private void Btn_Ban_Click(object sender, EventArgs e)
         {
             main.ConsoleInput.SendText(string.Format("ban add {0} {1}", TSPlayer.Name, Tb_Reason.Text));
+            this.Close();
+        }
+
+        private void flatClose1_Click(object sender, EventArgs e)
+        {
+            flatClose1.IsReallyQuitting = false;
             this.Close();
         }
     }

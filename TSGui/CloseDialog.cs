@@ -15,41 +15,43 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 using System;
-using System.IO;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using TShockAPI;
 using System.Threading;
 
 namespace TSGui.Extensions
 {
-    public class TaskReader : TextReader
+    public partial class CloseDialog : Form
     {
-        private AutoResetEvent _resetEvent = new AutoResetEvent(false);
-        private TextReader _reader;
-        private string _text;
-        private Action<string> _action;
-
-        public void SendText(string text)
+        ManualResetEvent resetEvent = new ManualResetEvent(false);
+        public CloseDialog()
         {
-            _text = text;
-            _resetEvent.Set();
-
-            if (_action != null)
-                _action(_text);
+            InitializeComponent();
         }
 
-        public TaskReader(TextReader textReader)
+        private void flatClose1_Click(object sender, EventArgs e)
         {
-            _reader = textReader;
+            this.flatClose1.IsReallyQuitting = false;
+            this.Close();
         }
 
-        public TaskReader(TextReader textReader, Action<string> action) : this(textReader)
+        private void flatButton2_Click(object sender, EventArgs e)
         {
-            _action = action;
+            main.ConsoleInput.SendText("exit");
+            this.Close();
         }
 
-        public override string ReadLine()
+        private void flatButton1_Click(object sender, EventArgs e)
         {
-            _resetEvent.WaitOne();
-            return _text;
+            main.ConsoleInput.SendText("exit-nosave");
+            this.Close();
         }
     }
 }

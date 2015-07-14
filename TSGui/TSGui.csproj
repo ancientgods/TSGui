@@ -33,9 +33,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FlatUIControls">
-      <HintPath>..\..\..\..\..\Desktop\FlatUI\FlatUI\bin\Debug\FlatUIControls.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -46,20 +43,95 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TerrariaServer, Version=1.15.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\CubiV\References\TerrariaServer.exe</HintPath>
+    <Reference Include="TerrariaServer">
+      <HintPath>..\..\..\..\CubiV\References\TerrariaServer.exe</HintPath>
     </Reference>
-    <Reference Include="TShockAPI, Version=4.2.6.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\CubiV\References\TShockAPI.dll</HintPath>
+    <Reference Include="TShockAPI">
+      <HintPath>..\..\..\..\CubiV\References\TShockAPI.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CloseDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CloseDialog.Designer.cs">
+      <DependentUpon>CloseDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="Extensions\TaskReader.cs" />
     <Compile Include="Extensions\TaskWriter.cs" />
+    <Compile Include="FlatUI\FlatAlertBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatClose.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatColorPalette.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatMax.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatMini.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatNumeric.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatStatusBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatStickyButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatToggle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FlatTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\FormSkin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlatUI\Helpers.cs" />
+    <Compile Include="FlatUI\MouseState.cs" />
+    <Compile Include="FlatUI\RadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Gui.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +149,9 @@
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CloseDialog.resx">
+      <DependentUpon>CloseDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui.resx">
       <DependentUpon>Gui.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +159,7 @@
       <DependentUpon>UserOptions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
