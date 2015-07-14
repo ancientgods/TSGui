@@ -60,7 +60,7 @@
             this.flatClose1.BackColor = System.Drawing.Color.White;
             this.flatClose1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.flatClose1.Font = new System.Drawing.Font("Marlett", 10F);
-            this.flatClose1.Location = new System.Drawing.Point(223, 13);
+            this.flatClose1.Location = new System.Drawing.Point(232, 3);
             this.flatClose1.Name = "flatClose1";
             this.flatClose1.Size = new System.Drawing.Size(18, 18);
             this.flatClose1.TabIndex = 2;

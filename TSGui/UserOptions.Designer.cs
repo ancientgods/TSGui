@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.formSkin1 = new magnusi.FormSkin();
+            this.flatClose1 = new magnusi.FlatClose();
+            this.Btn_Ban = new magnusi.FlatButton();
             this.Btn_Kick = new magnusi.FlatButton();
             this.flatLabel5 = new magnusi.FlatLabel();
             this.Label_Group = new magnusi.FlatLabel();
@@ -39,8 +41,6 @@
             this.flatLabel2 = new magnusi.FlatLabel();
             this.flatLabel1 = new magnusi.FlatLabel();
             this.Tb_Reason = new System.Windows.Forms.TextBox();
-            this.Btn_Ban = new magnusi.FlatButton();
-            this.flatClose1 = new magnusi.FlatClose();
             this.formSkin1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +71,35 @@
             this.formSkin1.Size = new System.Drawing.Size(384, 202);
             this.formSkin1.TabIndex = 0;
             this.formSkin1.Text = "Name Placeholder";
+            // 
+            // flatClose1
+            // 
+            this.flatClose1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.flatClose1.BackColor = System.Drawing.Color.White;
+            this.flatClose1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.flatClose1.Font = new System.Drawing.Font("Marlett", 10F);
+            this.flatClose1.Location = new System.Drawing.Point(363, 3);
+            this.flatClose1.Name = "flatClose1";
+            this.flatClose1.Size = new System.Drawing.Size(18, 18);
+            this.flatClose1.TabIndex = 26;
+            this.flatClose1.Text = "flatClose1";
+            this.flatClose1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.flatClose1.Click += new System.EventHandler(this.flatClose1_Click);
+            // 
+            // Btn_Ban
+            // 
+            this.Btn_Ban.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Ban.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.Btn_Ban.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Ban.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.Btn_Ban.Location = new System.Drawing.Point(303, 163);
+            this.Btn_Ban.Name = "Btn_Ban";
+            this.Btn_Ban.Rounded = false;
+            this.Btn_Ban.Size = new System.Drawing.Size(72, 30);
+            this.Btn_Ban.TabIndex = 25;
+            this.Btn_Ban.Text = "Ban";
+            this.Btn_Ban.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Btn_Ban.Click += new System.EventHandler(this.Btn_Ban_Click);
             // 
             // Btn_Kick
             // 
@@ -189,35 +218,6 @@
             this.Tb_Reason.Name = "Tb_Reason";
             this.Tb_Reason.Size = new System.Drawing.Size(130, 29);
             this.Tb_Reason.TabIndex = 8;
-            // 
-            // Btn_Ban
-            // 
-            this.Btn_Ban.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Ban.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.Btn_Ban.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_Ban.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.Btn_Ban.Location = new System.Drawing.Point(303, 163);
-            this.Btn_Ban.Name = "Btn_Ban";
-            this.Btn_Ban.Rounded = false;
-            this.Btn_Ban.Size = new System.Drawing.Size(72, 30);
-            this.Btn_Ban.TabIndex = 25;
-            this.Btn_Ban.Text = "Ban";
-            this.Btn_Ban.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.Btn_Ban.Click += new System.EventHandler(this.Btn_Ban_Click);
-            // 
-            // flatClose1
-            // 
-            this.flatClose1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatClose1.BackColor = System.Drawing.Color.White;
-            this.flatClose1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.flatClose1.Font = new System.Drawing.Font("Marlett", 10F);
-            this.flatClose1.Location = new System.Drawing.Point(363, 3);
-            this.flatClose1.Name = "flatClose1";
-            this.flatClose1.Size = new System.Drawing.Size(18, 18);
-            this.flatClose1.TabIndex = 26;
-            this.flatClose1.Text = "flatClose1";
-            this.flatClose1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.flatClose1.Click += new System.EventHandler(this.flatClose1_Click);
             // 
             // UserOptions
             // 
