@@ -38,6 +38,8 @@ namespace TSGui
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.flatLabel1 = new magnusi.FlatLabel();
             this.listBox1 = new magnusi.FlatListBox();
+            this.flatContextMenuStrip1 = new magnusi.FlatContextMenuStrip();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new magnusi.FlatTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -45,6 +47,7 @@ namespace TSGui
             this.formSkin1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.flatContextMenuStrip1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -158,6 +161,7 @@ namespace TSGui
             this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.listBox1.ContextMenuStrip = this.flatContextMenuStrip1;
             this.listBox1.items = new string[] {
         ""};
             this.listBox1.Location = new System.Drawing.Point(657, 30);
@@ -165,6 +169,23 @@ namespace TSGui
             this.listBox1.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.listBox1.Size = new System.Drawing.Size(135, 300);
             this.listBox1.TabIndex = 4;
+            // 
+            // flatContextMenuStrip1
+            // 
+            this.flatContextMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.flatContextMenuStrip1.ForeColor = System.Drawing.Color.White;
+            this.flatContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem});
+            this.flatContextMenuStrip1.Name = "flatContextMenuStrip1";
+            this.flatContextMenuStrip1.ShowImageMargin = false;
+            this.flatContextMenuStrip1.Size = new System.Drawing.Size(76, 26);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(75, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // textBox1
             // 
@@ -238,6 +259,7 @@ namespace TSGui
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.flatContextMenuStrip1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -257,6 +279,8 @@ namespace TSGui
         private FlatClose flatClose1;
         private FlatMax flatMax1;
         private FlatMini flatMini1;
+        private FlatContextMenuStrip flatContextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
 
 
     }

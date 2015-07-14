@@ -78,7 +78,14 @@ namespace TSGui
             Console.SetOut(new TaskWriter(Console.Out, WriteToTextbox));
             Console.SetIn(main.ConsoleInput);
             listBox1.ListBx.MouseDoubleClick += ListBx_MouseDoubleClick; //Add here because the designer removes the code (because of the .ListBX).
+            listBox1.HandleCreated += ListBx_HandleCreated; //Add here because designer is a bitch.
         }
+
+        private void ListBx_HandleCreated(object sender, EventArgs e)
+        {
+            listBox1.Focus();
+        }
+
 
         void ListBx_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -161,6 +168,16 @@ namespace TSGui
                 main.ConsoleInput.SendText(tb.Text);
                 tb.Text = "";              
             }
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Added here because people are retarded and we want to runtime exception.
+            try
+            {
+                System.Windows.Forms.Clipboard.SetText(listBox1.ListBx.SelectedItem.ToString());
+            }
+            catch { }
         }
     }
 }
