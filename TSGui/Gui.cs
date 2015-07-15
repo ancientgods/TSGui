@@ -19,10 +19,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Management;
 using System.Text;
-using System.Diagnostics;
 using System.Windows.Forms;
+using System.Diagnostics;
 using TShockAPI;
 using Terraria;
 using TerrariaApi.Server;
@@ -34,10 +33,6 @@ namespace TSGui
 {
     public partial class Gui : Form
     {
-        DateTime launchTime = new DateTime();
-        public System.Timers.Timer refreshTimer;
-        public bool handleCreated = false;
-        
         public Gui()
         {
             InitializeComponent();
@@ -83,96 +78,7 @@ namespace TSGui
             Console.SetOut(new TaskWriter(Console.Out, WriteToTextbox));
             Console.SetIn(main.ConsoleInput);
             listBox1.ListBx.MouseDoubleClick += ListBx_MouseDoubleClick; //Add here because the designer removes the code (because of the .ListBX).
-            textBox1.HandleCreated += ListBx_HandleCreated; //Add here because designer is a bitch.
-            refreshTimer.Interval = 1000;
-            System.Threading.Thread.Sleep(100);
-            refreshTimer.Elapsed += refreshTimer_Elapsed;
-            statsTab.HandleCreated += handleiscreated;
         }
-
-        private void handleiscreated(object sender, EventArgs e)
-        {
-            handleCreated = true;
-        }
-
-        void refreshTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-
-            if (handleCreated)
-            {
-                //Computer Info
-                flatLabel9.Text = System.Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER");
-                flatLabel10.Text = getCPUCounter().ToString();
-                flatLabel11.Text = getRAMCounter().ToString();
-                flatLabel12.Text = GetOSFriendlyName();
-                flatLabel13.Text = Environment.MachineName;
-                flatLabel14.Text = Environment.UserName;
-
-                //TShock Info
-                flatLabel17.Text = TShock.Players.Count().ToString();
-                //flatLabel19.Text = TShockAPI.
-                flatLabel21.Text = getHoursRunning();
-                flatLabel22.Text = System.IO.Directory.GetFiles(Environment.CurrentDirectory + "\\ServerPlugins").Count().ToString();
-                flatLabel23.Text = TShock.Groups.Count().ToString();
-                flatLabel24.Text = TShockAPI.Commands.ChatCommands.Count().ToString();
-            }
-
-        }
-
-        private string getHoursRunning()
-        {
-            DateTime currentTime = new DateTime();
-            return currentTime.Subtract(launchTime).TotalMinutes.ToString();
-        }
-        public static string GetOSFriendlyName()
-        {
-            string result = string.Empty;
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
-            foreach (ManagementObject os in searcher.Get())
-            {
-                result = os["Caption"].ToString();
-                break;
-            }
-            return result;
-        }
-
-        public object getCPUCounter()
-        {
-
-            PerformanceCounter cpuCounter = new PerformanceCounter();
-            cpuCounter.CategoryName = "Processor";
-            cpuCounter.CounterName = "% Processor Time";
-            cpuCounter.InstanceName = "_Total";
-
-            // will always start at 0
-            dynamic firstValue = cpuCounter.NextValue();
-            System.Threading.Thread.Sleep(1000);
-            // now matches task manager reading
-            dynamic secondValue = cpuCounter.NextValue();
-
-            return secondValue;
-
-        }
-        public object getRAMCounter()
-        {
-
-            PerformanceCounter ramCounter = new PerformanceCounter("Memory", "Available MBytes", true);
-
-            // will always start at 0
-            dynamic firstValue = ramCounter.NextValue();
-            System.Threading.Thread.Sleep(1000);
-            // now matches task manager reading
-            dynamic secondValue = ramCounter.NextValue();
-
-            return secondValue;
-
-        }
-        private void ListBx_HandleCreated(object sender, EventArgs e)
-        {
-            listBox1.Focus();
-        }
-
-
 
         void ListBx_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -254,35 +160,6 @@ namespace TSGui
                 FlatTextBox tb = (sender as FlatTextBox);
                 main.ConsoleInput.SendText(tb.Text);
                 tb.Text = "";              
-            }
-        }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Added here because people are retarded and we want to runtime exception.
-            try
-            {
-                System.Windows.Forms.Clipboard.SetText(listBox1.ListBx.SelectedItem.ToString());
-            }
-            catch { }
-        }
-
-        private void flatComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (flatComboBox1.SelectedIndex)
-            {
-                case 0:
-                    refreshTimer.Interval = 1000;
-                    break;
-                case 1:
-                    refreshTimer.Interval = 3000;
-                    break;
-                case 2:
-                    refreshTimer.Interval = 5000;
-                    break;
-                case 3:
-                    refreshTimer.Interval = 30000;
-                    break;
             }
         }
     }
