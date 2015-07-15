@@ -44,7 +44,7 @@ namespace TSGui
         }
         public override string Author
         {
-            get { return "Ancientgods"; }
+            get { return "Ancientgods & magnusi"; }
         }
         public override string Name
         {
@@ -53,7 +53,7 @@ namespace TSGui
 
         public override string Description
         {
-            get { return "My code works, and I know why! :)"; }
+            get { return " \"My code works, and I know why! :)\" - Ancientgods \n \"My code doesn't, and I don't know why.. :(\" - magnusi"; }
         }
 
         public override void Initialize()
