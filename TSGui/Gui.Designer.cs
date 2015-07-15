@@ -42,10 +42,13 @@ namespace TSGui
             this.TextBoxConsoleOutput = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.TbInfo = new magnusi.FlatTextBox();
+            this.ListBoxUsernamesContextMenu = new magnusi.FlatContextMenuStrip();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GuiSkin.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.ListBoxUsernamesContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // GuiSkin
@@ -222,6 +225,23 @@ namespace TSGui
             this.TbInfo.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.TbInfo.UseSystemPasswordChar = false;
             // 
+            // ListBoxUsernamesContextMenu
+            // 
+            this.ListBoxUsernamesContextMenu.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.ListBoxUsernamesContextMenu.ForeColor = System.Drawing.Color.White;
+            this.ListBoxUsernamesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem});
+            this.ListBoxUsernamesContextMenu.Name = "ListBoxUsernamesContextMenu";
+            this.ListBoxUsernamesContextMenu.ShowImageMargin = false;
+            this.ListBoxUsernamesContextMenu.Size = new System.Drawing.Size(128, 48);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
             // Gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +259,7 @@ namespace TSGui
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.ListBoxUsernamesContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -257,6 +278,8 @@ namespace TSGui
         private FlatClose GuiClose;
         private FlatMax GuiMax;
         private FlatMini GuiMin;
+        private FlatContextMenuStrip ListBoxUsernamesContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
 
 
     }
