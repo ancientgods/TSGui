@@ -46,6 +46,8 @@ namespace TSGui.Extensions
         public static void Append(this RichTextBox rtb, string text, ConsoleColor c)
         {
             System.Drawing.Color systemColor = System.Drawing.Color.FromName(c.ToString());
+            if (systemColor.R + systemColor.G + systemColor.B < 100) //Too dark to be visible in the console
+                systemColor = System.Drawing.Color.FromArgb(128, 128, 128); //Gray
             Append(rtb, text, systemColor);
         }
 

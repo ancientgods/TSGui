@@ -45,5 +45,16 @@ namespace TSGui
             BtnExit.IsReallyQuitting = false;
             this.Close();
         }
+
+        private void Btn_Give_Click(object sender, EventArgs e)
+        {
+            int Id;
+            string name = Tb_Item.Text;
+            int.TryParse(Tb_Item.Text, out Id);
+            if (Id != 0)
+                name = TShock.Utils.GetItemById(Id).name;
+
+            main.ConsoleInput.SendText(string.Format("give \"{0}\" {1} {2}", name, TSPlayer.Name, Tb_Stack.Text));
+        }
     }
 }
