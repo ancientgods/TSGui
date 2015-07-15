@@ -30,109 +30,109 @@ namespace TSGui
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gui));
-            this.formSkin1 = new magnusi.FormSkin();
-            this.flatClose1 = new magnusi.FlatClose();
-            this.flatMax1 = new magnusi.FlatMax();
-            this.flatMini1 = new magnusi.FlatMini();
-            this.tabControl1 = new magnusi.FlatTabControl();
+            this.GuiSkin = new magnusi.FormSkin();
+            this.GuiClose = new magnusi.FlatClose();
+            this.GuiMax = new magnusi.FlatMax();
+            this.GuiMin = new magnusi.FlatMini();
+            this.TabControl = new magnusi.FlatTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.flatLabel1 = new magnusi.FlatLabel();
-            this.listBox1 = new magnusi.FlatListBox();
-            this.textBox1 = new magnusi.FlatTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.LabelPlayers = new magnusi.FlatLabel();
+            this.ListBoxUsernames = new magnusi.FlatListBox();
+            this.TextBox_Input = new magnusi.FlatTextBox();
+            this.TextBoxConsoleOutput = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox2 = new magnusi.FlatTextBox();
-            this.formSkin1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.TbInfo = new magnusi.FlatTextBox();
+            this.GuiSkin.SuspendLayout();
+            this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // formSkin1
+            // GuiSkin
             // 
-            this.formSkin1.BackColor = System.Drawing.Color.White;
-            this.formSkin1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.formSkin1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(60)))));
-            this.formSkin1.Controls.Add(this.flatClose1);
-            this.formSkin1.Controls.Add(this.flatMax1);
-            this.formSkin1.Controls.Add(this.flatMini1);
-            this.formSkin1.Controls.Add(this.tabControl1);
-            this.formSkin1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.formSkin1.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.formSkin1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.formSkin1.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
-            this.formSkin1.HeaderMaximize = false;
-            this.formSkin1.Location = new System.Drawing.Point(0, 0);
-            this.formSkin1.Name = "formSkin1";
-            this.formSkin1.Size = new System.Drawing.Size(808, 464);
-            this.formSkin1.TabIndex = 0;
-            this.formSkin1.Text = "Gui - by Ancientgods & magnusi";
+            this.GuiSkin.BackColor = System.Drawing.Color.White;
+            this.GuiSkin.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.GuiSkin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(60)))));
+            this.GuiSkin.Controls.Add(this.GuiClose);
+            this.GuiSkin.Controls.Add(this.GuiMax);
+            this.GuiSkin.Controls.Add(this.GuiMin);
+            this.GuiSkin.Controls.Add(this.TabControl);
+            this.GuiSkin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GuiSkin.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.GuiSkin.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.GuiSkin.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.GuiSkin.HeaderMaximize = false;
+            this.GuiSkin.Location = new System.Drawing.Point(0, 0);
+            this.GuiSkin.Name = "GuiSkin";
+            this.GuiSkin.Size = new System.Drawing.Size(808, 464);
+            this.GuiSkin.TabIndex = 0;
+            this.GuiSkin.Text = "Gui - by Ancientgods & magnusi";
             // 
-            // flatClose1
+            // GuiClose
             // 
-            this.flatClose1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatClose1.BackColor = System.Drawing.Color.White;
-            this.flatClose1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.flatClose1.Font = new System.Drawing.Font("Marlett", 10F);
-            this.flatClose1.Location = new System.Drawing.Point(787, 3);
-            this.flatClose1.Name = "flatClose1";
-            this.flatClose1.Size = new System.Drawing.Size(18, 18);
-            this.flatClose1.TabIndex = 7;
-            this.flatClose1.Text = "flatClose1";
-            this.flatClose1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.flatClose1.Click += new System.EventHandler(this.BtnClose_Click);
+            this.GuiClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.GuiClose.BackColor = System.Drawing.Color.White;
+            this.GuiClose.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.GuiClose.Font = new System.Drawing.Font("Marlett", 10F);
+            this.GuiClose.Location = new System.Drawing.Point(787, 3);
+            this.GuiClose.Name = "GuiClose";
+            this.GuiClose.Size = new System.Drawing.Size(18, 18);
+            this.GuiClose.TabIndex = 7;
+            this.GuiClose.Text = "flatClose1";
+            this.GuiClose.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.GuiClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
-            // flatMax1
+            // GuiMax
             // 
-            this.flatMax1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatMax1.BackColor = System.Drawing.Color.White;
-            this.flatMax1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
-            this.flatMax1.Font = new System.Drawing.Font("Marlett", 12F);
-            this.flatMax1.Location = new System.Drawing.Point(764, 3);
-            this.flatMax1.Name = "flatMax1";
-            this.flatMax1.Size = new System.Drawing.Size(18, 18);
-            this.flatMax1.TabIndex = 6;
-            this.flatMax1.Text = "flatMax1";
-            this.flatMax1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.GuiMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.GuiMax.BackColor = System.Drawing.Color.White;
+            this.GuiMax.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.GuiMax.Font = new System.Drawing.Font("Marlett", 12F);
+            this.GuiMax.Location = new System.Drawing.Point(764, 3);
+            this.GuiMax.Name = "GuiMax";
+            this.GuiMax.Size = new System.Drawing.Size(18, 18);
+            this.GuiMax.TabIndex = 6;
+            this.GuiMax.Text = "flatMax1";
+            this.GuiMax.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             // 
-            // flatMini1
+            // GuiMin
             // 
-            this.flatMini1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatMini1.BackColor = System.Drawing.Color.White;
-            this.flatMini1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
-            this.flatMini1.Font = new System.Drawing.Font("Marlett", 12F);
-            this.flatMini1.Location = new System.Drawing.Point(740, 3);
-            this.flatMini1.Name = "flatMini1";
-            this.flatMini1.Size = new System.Drawing.Size(18, 18);
-            this.flatMini1.TabIndex = 5;
-            this.flatMini1.Text = "flatMini1";
-            this.flatMini1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.GuiMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.GuiMin.BackColor = System.Drawing.Color.White;
+            this.GuiMin.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.GuiMin.Font = new System.Drawing.Font("Marlett", 12F);
+            this.GuiMin.Location = new System.Drawing.Point(740, 3);
+            this.GuiMin.Name = "GuiMin";
+            this.GuiMin.Size = new System.Drawing.Size(18, 18);
+            this.GuiMin.TabIndex = 5;
+            this.GuiMin.Text = "flatMini1";
+            this.GuiMin.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             // 
-            // tabControl1
+            // TabControl
             // 
-            this.tabControl1.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TabControl.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tabControl1.ItemSize = new System.Drawing.Size(120, 40);
-            this.tabControl1.Location = new System.Drawing.Point(0, 48);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(808, 413);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 3;
+            this.TabControl.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.TabControl.Controls.Add(this.tabPage1);
+            this.TabControl.Controls.Add(this.tabPage2);
+            this.TabControl.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.TabControl.ItemSize = new System.Drawing.Size(120, 40);
+            this.TabControl.Location = new System.Drawing.Point(0, 48);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(808, 413);
+            this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.TabControl.TabIndex = 3;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tabPage1.Controls.Add(this.flatLabel1);
-            this.tabPage1.Controls.Add(this.listBox1);
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Controls.Add(this.richTextBox1);
+            this.tabPage1.Controls.Add(this.LabelPlayers);
+            this.tabPage1.Controls.Add(this.ListBoxUsernames);
+            this.tabPage1.Controls.Add(this.TextBox_Input);
+            this.tabPage1.Controls.Add(this.TextBoxConsoleOutput);
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -140,66 +140,66 @@ namespace TSGui
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Console";
             // 
-            // flatLabel1
+            // LabelPlayers
             // 
-            this.flatLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatLabel1.AutoSize = true;
-            this.flatLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.flatLabel1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.flatLabel1.ForeColor = System.Drawing.Color.White;
-            this.flatLabel1.Location = new System.Drawing.Point(657, 8);
-            this.flatLabel1.Name = "flatLabel1";
-            this.flatLabel1.Size = new System.Drawing.Size(99, 19);
-            this.flatLabel1.TabIndex = 6;
-            this.flatLabel1.Text = "Online Players:";
+            this.LabelPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelPlayers.AutoSize = true;
+            this.LabelPlayers.BackColor = System.Drawing.Color.Transparent;
+            this.LabelPlayers.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.LabelPlayers.ForeColor = System.Drawing.Color.White;
+            this.LabelPlayers.Location = new System.Drawing.Point(657, 8);
+            this.LabelPlayers.Name = "LabelPlayers";
+            this.LabelPlayers.Size = new System.Drawing.Size(99, 19);
+            this.LabelPlayers.TabIndex = 6;
+            this.LabelPlayers.Text = "Online Players:";
             // 
-            // listBox1
+            // ListBoxUsernames
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ListBoxUsernames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
-            this.listBox1.items = new string[] {
+            this.ListBoxUsernames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.ListBoxUsernames.items = new string[] {
         ""};
-            this.listBox1.Location = new System.Drawing.Point(657, 30);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.listBox1.Size = new System.Drawing.Size(135, 300);
-            this.listBox1.TabIndex = 4;
+            this.ListBoxUsernames.Location = new System.Drawing.Point(657, 30);
+            this.ListBoxUsernames.Name = "ListBoxUsernames";
+            this.ListBoxUsernames.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.ListBoxUsernames.Size = new System.Drawing.Size(135, 300);
+            this.ListBoxUsernames.TabIndex = 4;
             // 
-            // textBox1
+            // TextBox_Input
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InfoText;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox1.Location = new System.Drawing.Point(3, 333);
-            this.textBox1.MaxLength = 32767;
-            this.textBox1.Multiline = false;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = false;
-            this.textBox1.Size = new System.Drawing.Size(794, 29);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.textBox1.UseSystemPasswordChar = false;
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+            this.TextBox_Input.BackColor = System.Drawing.SystemColors.InfoText;
+            this.TextBox_Input.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TextBox_Input.Location = new System.Drawing.Point(3, 333);
+            this.TextBox_Input.MaxLength = 32767;
+            this.TextBox_Input.Multiline = false;
+            this.TextBox_Input.Name = "TextBox_Input";
+            this.TextBox_Input.ReadOnly = false;
+            this.TextBox_Input.Size = new System.Drawing.Size(794, 29);
+            this.TextBox_Input.TabIndex = 3;
+            this.TextBox_Input.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextBox_Input.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.TextBox_Input.UseSystemPasswordChar = false;
+            this.TextBox_Input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxInput_KeyDown);
             // 
-            // richTextBox1
+            // TextBoxConsoleOutput
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TextBoxConsoleOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.InfoText;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(6, 8);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(645, 319);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.TextBoxConsoleOutput.BackColor = System.Drawing.SystemColors.InfoText;
+            this.TextBoxConsoleOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBoxConsoleOutput.Location = new System.Drawing.Point(6, 8);
+            this.TextBoxConsoleOutput.Name = "TextBoxConsoleOutput";
+            this.TextBoxConsoleOutput.ReadOnly = true;
+            this.TextBoxConsoleOutput.Size = new System.Drawing.Size(645, 319);
+            this.TextBoxConsoleOutput.TabIndex = 2;
+            this.TextBoxConsoleOutput.Text = "";
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.TbInfo);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -207,35 +207,35 @@ namespace TSGui
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
-            // textBox2
+            // TbInfo
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Transparent;
-            this.textBox2.Location = new System.Drawing.Point(236, 111);
-            this.textBox2.MaxLength = 32767;
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(320, 129);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = resources.GetString("textBox2.Text");
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.textBox2.UseSystemPasswordChar = false;
+            this.TbInfo.BackColor = System.Drawing.Color.Transparent;
+            this.TbInfo.Location = new System.Drawing.Point(236, 111);
+            this.TbInfo.MaxLength = 32767;
+            this.TbInfo.Multiline = true;
+            this.TbInfo.Name = "TbInfo";
+            this.TbInfo.ReadOnly = true;
+            this.TbInfo.Size = new System.Drawing.Size(320, 129);
+            this.TbInfo.TabIndex = 1;
+            this.TbInfo.Text = resources.GetString("TbInfo.Text");
+            this.TbInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TbInfo.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.TbInfo.UseSystemPasswordChar = false;
             // 
             // Gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 464);
-            this.Controls.Add(this.formSkin1);
+            this.Controls.Add(this.GuiSkin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Gui";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.Load += new System.EventHandler(this.Gui_Load);
-            this.formSkin1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.GuiSkin.ResumeLayout(false);
+            this.TabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -245,18 +245,18 @@ namespace TSGui
 
         #endregion
 
-        private magnusi.FormSkin formSkin1;
-        private magnusi.FlatTabControl tabControl1;
+        private magnusi.FormSkin GuiSkin;
+        private magnusi.FlatTabControl TabControl;
         private System.Windows.Forms.TabPage tabPage1;
-        private FlatListBox listBox1;
-        private FlatTextBox textBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private FlatListBox ListBoxUsernames;
+        private FlatTextBox TextBox_Input;
+        private System.Windows.Forms.RichTextBox TextBoxConsoleOutput;
         private System.Windows.Forms.TabPage tabPage2;
-        private FlatTextBox textBox2;
-        private FlatLabel flatLabel1;
-        private FlatClose flatClose1;
-        private FlatMax flatMax1;
-        private FlatMini flatMini1;
+        private FlatTextBox TbInfo;
+        private FlatLabel LabelPlayers;
+        private FlatClose GuiClose;
+        private FlatMax GuiMax;
+        private FlatMini GuiMin;
 
 
     }
