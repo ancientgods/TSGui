@@ -28,7 +28,9 @@ namespace TSGui
     [ApiVersion(1, 19)]
     public class main : TerrariaPlugin
     {
+        Gui gui;
         public static TaskReader ConsoleInput;
+        public static bool HasWorldInitialized;
 
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
@@ -58,15 +60,21 @@ namespace TSGui
 
         public override void Initialize()
         {
+            ServerApi.Hooks.GamePostInitialize.Register(this, OnPostInitialize);
             main.SetConsoleState(SW_HIDE);
             LaunchInterface();
+        }
+
+        public void OnPostInitialize(EventArgs e)
+        {
+            HasWorldInitialized = true;
         }
 
         public void LaunchInterface()
         {
             Thread t = new Thread(() =>
             {
-                Gui gui = new Gui();
+                gui = new Gui();
                 try
                 {
                     ServerApi.Hooks.ServerJoin.Register(this, gui.ServerJoin);
@@ -94,8 +102,10 @@ namespace TSGui
         {
             if (disposing)
             {
+                ServerApi.Hooks.GamePostInitialize.Deregister(this, OnPostInitialize);
             }
             base.Dispose(disposing);
+            gui.Close();
         }
 
         public main(Main game)

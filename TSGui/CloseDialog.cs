@@ -30,25 +30,24 @@ namespace TSGui.Extensions
 {
     public partial class CloseDialog : Form
     {
-        ManualResetEvent resetEvent = new ManualResetEvent(false);
         public CloseDialog()
         {
             InitializeComponent();
         }
 
-        private void flatClose1_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
-            this.flatClose1.IsReallyQuitting = false;
+            this.BtnClose.IsReallyQuitting = false;
             this.Close();
         }
 
-        private void flatButton2_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             main.ConsoleInput.SendText("exit");
             this.Close();
         }
 
-        private void flatButton1_Click(object sender, EventArgs e)
+        private void BtnNosave_Click(object sender, EventArgs e)
         {
             main.ConsoleInput.SendText("exit-nosave");
             this.Close();

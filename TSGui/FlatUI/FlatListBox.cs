@@ -24,7 +24,7 @@ namespace magnusi
 		private string[] _items;
 		private color  BaseColor;
 		private color  _SelectedColor;
-		public virtual ListBox ListBx
+		public virtual ListBox ListBoxSkin
 		{
 			[DebuggerNonUserCode]
 			get
@@ -59,8 +59,8 @@ namespace magnusi
 			set
 			{
 				this._items = value;
-				this.ListBx.Items.Clear();
-				this.ListBx.Items.AddRange(value);
+				this.ListBoxSkin.Items.Clear();
+				this.ListBoxSkin.Items.AddRange(value);
 				this.Invalidate();
 			}
 		}
@@ -80,14 +80,14 @@ namespace magnusi
 		{
 			get
 			{
-				return Conversions.ToString(this.ListBx.SelectedItem);
+				return Conversions.ToString(this.ListBoxSkin.SelectedItem);
 			}
 		}
 		public int SelectedIndex
 		{
 			get
 			{
-				return this.ListBx.SelectedIndex;
+				return this.ListBoxSkin.SelectedIndex;
 			}
 		}
 		[DebuggerNonUserCode]
@@ -151,13 +151,13 @@ namespace magnusi
 
 		public void Clear()
 		{
-			this.ListBx.Items.Clear();
+			this.ListBoxSkin.Items.Clear();
 		}
 		public void ClearSelected()
 		{
 			checked
 			{
-				int i = this.ListBx.SelectedItems.Count - 1;
+				int i = this.ListBoxSkin.SelectedItems.Count - 1;
 				while (true)
 				{
 					int arg_46_0 = i;
@@ -166,7 +166,7 @@ namespace magnusi
 					{
 						break;
 					}
-					this.ListBx.Items.Remove(RuntimeHelpers.GetObjectValue(this.ListBx.SelectedItems[i]));
+					this.ListBoxSkin.Items.Remove(RuntimeHelpers.GetObjectValue(this.ListBoxSkin.SelectedItems[i]));
 					i += -1;
 				}
 			}
@@ -193,7 +193,7 @@ namespace magnusi
 						rectangle bounds2 = new rectangle (bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
 						arg_D2_0.FillRectangle(arg_D2_1, bounds2);
 						Graphics arg_138_0 = e.Graphics;
-						string arg_138_1 = " " + this.ListBx.Items[e.Index].ToString();
+						string arg_138_1 = " " + this.ListBoxSkin.Items[e.Index].ToString();
 						Font arg_138_2 = new Font("Segoe UI", 8f);
 						Brush arg_138_3 = Brushes.White;
 						bounds = e.Bounds;
@@ -209,7 +209,7 @@ namespace magnusi
 						rectangle bounds = new rectangle (bounds2.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
 						arg_19C_0.FillRectangle(arg_19C_1, bounds);
 						Graphics arg_202_0 = e.Graphics;
-						string arg_202_1 = " " + this.ListBx.Items[e.Index].ToString();
+						string arg_202_1 = " " + this.ListBoxSkin.Items[e.Index].ToString();
 						Font arg_202_2 = new Font("Segoe UI", 8f);
 						Brush arg_202_3 = Brushes.White;
 						bounds = e.Bounds;
@@ -224,26 +224,26 @@ namespace magnusi
 		protected override void OnCreateControl()
 		{
 			base.OnCreateControl();
-			bool flag = !this.Controls.Contains(this.ListBx);
+			bool flag = !this.Controls.Contains(this.ListBoxSkin);
 			if (flag)
 			{
-				this.Controls.Add(this.ListBx);
+				this.Controls.Add(this.ListBoxSkin);
 			}
 		}
 		public void AddRange(object[] items)
 		{
-			this.ListBx.Items.Remove("");
-			this.ListBx.Items.AddRange(items);
+			this.ListBoxSkin.Items.Remove("");
+			this.ListBoxSkin.Items.AddRange(items);
 		}
 		public void AddItem(object item)
 		{
-			this.ListBx.Items.Remove("");
-			this.ListBx.Items.Add(RuntimeHelpers.GetObjectValue(item));
+			this.ListBoxSkin.Items.Remove("");
+			this.ListBoxSkin.Items.Add(RuntimeHelpers.GetObjectValue(item));
 		}
 		public FlatListBox()
 		{
 			FlatListBox.__ENCAddToList(this);
-			this.ListBx = new ListBox();
+			this.ListBoxSkin = new ListBox();
 			this._items = new string[]
 			{
 				""
@@ -252,19 +252,19 @@ namespace magnusi
 			this._SelectedColor = Helpers._FlatColor;
 			this.SetStyle(ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
 			this.DoubleBuffered = true;
-			this.ListBx.DrawMode = DrawMode.OwnerDrawFixed;
-			this.ListBx.ScrollAlwaysVisible = false;
-			this.ListBx.HorizontalScrollbar = false;
-			this.ListBx.BorderStyle = BorderStyle.None;
-			this.ListBx.BackColor = this.BaseColor;
-			this.ListBx.ForeColor = color .White;
-			Control arg_CE_0 = this.ListBx;
+			this.ListBoxSkin.DrawMode = DrawMode.OwnerDrawFixed;
+			this.ListBoxSkin.ScrollAlwaysVisible = false;
+			this.ListBoxSkin.HorizontalScrollbar = false;
+			this.ListBoxSkin.BorderStyle = BorderStyle.None;
+			this.ListBoxSkin.BackColor = this.BaseColor;
+			this.ListBoxSkin.ForeColor = color .White;
+			Control arg_CE_0 = this.ListBoxSkin;
 			point location = new point(3, 3);
 			arg_CE_0.Location = location;
-			this.ListBx.Font = new Font("Segoe UI", 8f);
-			this.ListBx.ItemHeight = 20;
-			this.ListBx.Items.Clear();
-			this.ListBx.IntegralHeight = false;
+			this.ListBoxSkin.Font = new Font("Segoe UI", 8f);
+			this.ListBoxSkin.ItemHeight = 20;
+			this.ListBoxSkin.Items.Clear();
+			this.ListBoxSkin.IntegralHeight = false;
 			Size size = new Size(131, 101);
 			this.Size = size;
 			this.BackColor = this.BaseColor;
@@ -279,7 +279,7 @@ namespace magnusi
 			g.PixelOffsetMode = PixelOffsetMode.HighQuality;
 			g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 			g.Clear(this.BackColor);
-			Control arg_86_0 = this.ListBx;
+			Control arg_86_0 = this.ListBoxSkin;
 			Size size = checked(new Size(this.Width - 6, this.Height - 2));
 			arg_86_0.Size = size;
 			g.FillRectangle(new SolidBrush(this.BaseColor), Base);
