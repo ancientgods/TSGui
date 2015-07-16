@@ -156,15 +156,5 @@ namespace TSGui
                 tb.Text = string.Empty;
             }
         }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(ListBoxUsernames.ListBoxSkin.SelectedItem != null)
-                System.Windows.Forms.Clipboard.SetText(ListBoxUsernames.ListBoxSkin.SelectedItem.ToString());
-            }
-            catch { }
-        }
     }
 }

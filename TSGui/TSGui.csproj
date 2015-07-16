@@ -44,10 +44,10 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="TerrariaServer">
-      <HintPath>..\..\..\Users\Daniela\Desktop\Newest tshock\TerrariaServer.exe</HintPath>
+      <HintPath>..\..\..\..\CubiV\References\TerrariaServer.exe</HintPath>
     </Reference>
     <Reference Include="TShockAPI">
-      <HintPath>..\..\..\Users\Daniela\Desktop\Newest tshock\ServerPlugins\TShockAPI.dll</HintPath>
+      <HintPath>..\..\..\..\CubiV\References\TShockAPI.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
