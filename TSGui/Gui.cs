@@ -49,6 +49,9 @@ namespace TSGui
                 bool HasConsoleCleared = false;
                 if (s.Length > 0)
                 {
+                    if (s == ": ")
+                        return;
+
                     if ((int)s[s.Length - 1] == 52) //Clear console
                     {
                         TextBoxConsoleOutput.MainThreadInvoke(() =>
@@ -152,9 +155,30 @@ namespace TSGui
             if (e.KeyCode == Keys.Enter)
             {
                 FlatTextBox tb = (sender as FlatTextBox);
-                main.ConsoleInput.SendText(tb.Text);
+                string[] input = tb.Text.Split(';');
+                for (int i = 0; i < input.Length; i++)
+                {
+                    TextBoxConsoleOutput.Append(input[i]);
+                    main.ConsoleInput.SendText(input[i]);
+                }
                 tb.Text = string.Empty;
             }
+        }
+
+        private void TextBox_Input_MouseEnter(object sender, EventArgs e)
+        {
+            if (TextBox_Input.Text == "Enter text")
+                TextBox_Input.Text = "";
+        }
+
+        private void TextBoxConsoleOutput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+            if (TextBox_Input.Text == "Enter text")
+                TextBox_Input.Text = "";
+            TextBox_Input.Text += e.KeyChar;
+            TextBox_Input.TB.Focus();
+            TextBox_Input.TB.Select(1, 0);
         }
     }
 }

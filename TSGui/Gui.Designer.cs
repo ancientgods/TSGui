@@ -172,15 +172,17 @@ namespace TSGui
             this.TextBox_Input.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TextBox_Input.Location = new System.Drawing.Point(3, 333);
             this.TextBox_Input.MaxLength = 32767;
-            this.TextBox_Input.Multiline = false;
+            this.TextBox_Input.Multiline = true;
             this.TextBox_Input.Name = "TextBox_Input";
             this.TextBox_Input.ReadOnly = false;
             this.TextBox_Input.Size = new System.Drawing.Size(794, 29);
             this.TextBox_Input.TabIndex = 3;
+            this.TextBox_Input.Text = "Enter text";
             this.TextBox_Input.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextBox_Input.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.TextBox_Input.UseSystemPasswordChar = false;
             this.TextBox_Input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxInput_KeyDown);
+            this.TextBox_Input.MouseEnter += new System.EventHandler(this.TextBox_Input_MouseEnter);
             // 
             // TextBoxConsoleOutput
             // 
@@ -195,6 +197,7 @@ namespace TSGui
             this.TextBoxConsoleOutput.Size = new System.Drawing.Size(645, 319);
             this.TextBoxConsoleOutput.TabIndex = 2;
             this.TextBoxConsoleOutput.Text = "";
+            this.TextBoxConsoleOutput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxConsoleOutput_KeyPress);
             // 
             // tabPage2
             // 
