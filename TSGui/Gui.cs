@@ -180,5 +180,11 @@ namespace TSGui
             TextBox_Input.TB.Focus();
             TextBox_Input.TB.Select(1, 0);
         }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ListBoxUsernames.ListBoxSkin.SelectedItem != null)
+                System.Windows.Forms.Clipboard.SetText(ListBoxUsernames.ListBoxSkin.SelectedItem.ToString());
+        }
     }
 }
