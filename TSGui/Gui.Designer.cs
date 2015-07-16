@@ -233,12 +233,12 @@ namespace TSGui
             this.copyToolStripMenuItem});
             this.ListBoxUsernamesContextMenu.Name = "ListBoxUsernamesContextMenu";
             this.ListBoxUsernamesContextMenu.ShowImageMargin = false;
-            this.ListBoxUsernamesContextMenu.Size = new System.Drawing.Size(128, 48);
+            this.ListBoxUsernamesContextMenu.Size = new System.Drawing.Size(76, 26);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(75, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
