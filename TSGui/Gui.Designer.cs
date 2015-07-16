@@ -150,7 +150,7 @@ namespace TSGui
             this.LabelPlayers.BackColor = System.Drawing.Color.Transparent;
             this.LabelPlayers.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.LabelPlayers.ForeColor = System.Drawing.Color.White;
-            this.LabelPlayers.Location = new System.Drawing.Point(657, 8);
+            this.LabelPlayers.Location = new System.Drawing.Point(657, 3);
             this.LabelPlayers.Name = "LabelPlayers";
             this.LabelPlayers.Size = new System.Drawing.Size(99, 19);
             this.LabelPlayers.TabIndex = 6;
@@ -161,9 +161,10 @@ namespace TSGui
             this.ListBoxUsernames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ListBoxUsernames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.ListBoxUsernames.ContextMenuStrip = this.ListBoxUsernamesContextMenu;
             this.ListBoxUsernames.items = new string[] {
         ""};
-            this.ListBoxUsernames.Location = new System.Drawing.Point(657, 30);
+            this.ListBoxUsernames.Location = new System.Drawing.Point(657, 27);
             this.ListBoxUsernames.Name = "ListBoxUsernames";
             this.ListBoxUsernames.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.ListBoxUsernames.Size = new System.Drawing.Size(135, 300);
@@ -236,12 +237,12 @@ namespace TSGui
             this.copyToolStripMenuItem});
             this.ListBoxUsernamesContextMenu.Name = "ListBoxUsernamesContextMenu";
             this.ListBoxUsernamesContextMenu.ShowImageMargin = false;
-            this.ListBoxUsernamesContextMenu.Size = new System.Drawing.Size(128, 48);
+            this.ListBoxUsernamesContextMenu.Size = new System.Drawing.Size(76, 26);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(75, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
