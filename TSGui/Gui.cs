@@ -183,11 +183,17 @@ namespace TSGui
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ListBoxUsernames.ListBoxSkin.SelectedItem != null)
+            if (ListBoxUsernames.ListBoxSkin.SelectedIndex >= 0 && ListBoxUsernames.ListBoxSkin.SelectedIndex < ListBoxUsernames.ListBoxSkin.Items.Count)
             {
-                System.Windows.Forms.Clipboard.SetText(ListBoxUsernames.ListBoxSkin.SelectedItem.ToString());
-                TextBoxConsoleOutput.AppendText("\n Copied " + ListBoxUsernames.ListBoxSkin.SelectedItem.ToString() + " to clipboard");
+                string text = ListBoxUsernames.ListBoxSkin.Items[ListBoxUsernames.ListBoxSkin.SelectedIndex].ToString();
+                if (!string.IsNullOrEmpty(text))
+                {
+                    System.Windows.Forms.Clipboard.SetText(ListBoxUsernames.ListBoxSkin.SelectedItem.ToString());
+                    TextBoxConsoleOutput.Append("Copied \"" + ListBoxUsernames.ListBoxSkin.SelectedItem.ToString() + "\" to clipboard.");
+                    return;
+                }
             }
+            TextBoxConsoleOutput.Append("Failed to copy username to clipboard! (No item selected)");
         }
     }
 }
