@@ -184,7 +184,10 @@ namespace TSGui
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ListBoxUsernames.ListBoxSkin.SelectedItem != null)
+            {
                 System.Windows.Forms.Clipboard.SetText(ListBoxUsernames.ListBoxSkin.SelectedItem.ToString());
+                TextBoxConsoleOutput.AppendText("\n Copied " + ListBoxUsernames.ListBoxSkin.SelectedItem.ToString() + " to clipboard");
+            }
         }
     }
 }
