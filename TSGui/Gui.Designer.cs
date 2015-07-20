@@ -43,12 +43,13 @@ namespace TSGui
             this.TextBox_Input = new magnusi.FlatTextBox();
             this.TextBoxConsoleOutput = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.TbInfo = new magnusi.FlatTextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.GuiSkin.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.ListBoxUsernamesContextMenu.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // GuiSkin
@@ -223,7 +224,7 @@ namespace TSGui
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tabPage2.Controls.Add(this.TbInfo);
+            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -231,20 +232,13 @@ namespace TSGui
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
-            // TbInfo
+            // pictureBox1
             // 
-            this.TbInfo.BackColor = System.Drawing.Color.Transparent;
-            this.TbInfo.Location = new System.Drawing.Point(236, 111);
-            this.TbInfo.MaxLength = 32767;
-            this.TbInfo.Multiline = true;
-            this.TbInfo.Name = "TbInfo";
-            this.TbInfo.ReadOnly = true;
-            this.TbInfo.Size = new System.Drawing.Size(320, 129);
-            this.TbInfo.TabIndex = 1;
-            this.TbInfo.Text = resources.GetString("TbInfo.Text");
-            this.TbInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.TbInfo.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.TbInfo.UseSystemPasswordChar = false;
+            this.pictureBox1.Location = new System.Drawing.Point(46, 38);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(708, 291);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // Gui
             // 
@@ -264,6 +258,7 @@ namespace TSGui
             this.tabPage1.PerformLayout();
             this.ListBoxUsernamesContextMenu.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -277,13 +272,13 @@ namespace TSGui
         private FlatTextBox TextBox_Input;
         private System.Windows.Forms.RichTextBox TextBoxConsoleOutput;
         private System.Windows.Forms.TabPage tabPage2;
-        private FlatTextBox TbInfo;
         private FlatLabel LabelPlayers;
         private FlatClose GuiClose;
         private FlatMax GuiMax;
         private FlatMini GuiMin;
         private FlatContextMenuStrip ListBoxUsernamesContextMenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        public System.Windows.Forms.PictureBox pictureBox1;
 
 
     }

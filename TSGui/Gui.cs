@@ -27,6 +27,7 @@ using Terraria;
 using TerrariaApi.Server;
 using TSGui.Extensions;
 using magnusi;
+using Map.API;
 
 
 namespace TSGui
@@ -81,6 +82,8 @@ namespace TSGui
             Console.SetIn(main.ConsoleInput); //Redirect console input to textbox
 
             ListBoxUsernames.ListBoxSkin.MouseDoubleClick += ListBoxUsernames_MouseDoubleClick; //Add here because the designer removes the code (because of the .ListBX).
+            pictureBox1.Paint += new PaintEventHandler(MapRedraw);
+            //this.Controls.Add(pictureBox1);
         }
 
         #region Hooks
@@ -194,6 +197,14 @@ namespace TSGui
                 }
             }
             TextBoxConsoleOutput.Append("Failed to copy username to clipboard! (No item selected)");
+        }
+
+        private void MapRedraw(object o, PaintEventArgs e)
+        {
+            if (main.worldchunk != null)
+            {
+                pictureBox1.Image = main.worldchunk;
+            }
         }
     }
 }

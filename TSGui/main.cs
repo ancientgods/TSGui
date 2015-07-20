@@ -40,6 +40,7 @@ namespace TSGui
 
         public const int SW_HIDE = 0;
         public const int SW_SHOW = 5;
+        public bool isEnabled = true;
         public override Version Version
         {
             get { return Assembly.GetExecutingAssembly().GetName().Version; }
@@ -68,7 +69,27 @@ namespace TSGui
         public void OnPostInitialize(EventArgs e)
         {
             HasWorldInitialized = true;
+            Thread mapupdatethread;
+            mapupdatethread = new Thread(mapupdate);
+            mapupdatethread.Name = "Map Update Thread";
+            mapupdatethread.Start();
+            while (!mapupdatethread.IsAlive);
         }
+
+        void mapupdate()
+        {
+            while(isEnabled)
+            {
+                gui.pictureBox1.Invalidate();
+                gui.pictureBox1.IsAccessible = false;
+                worldchunk = Map.API.Mapper.map(Terraria.Main.spawnTileX - 300, Terraria.Main.spawnTileY - 200, Terraria.Main.spawnTileX + 300, Terraria.Main.spawnTileY + 200);
+                gui.pictureBox1.IsAccessible = true;
+                gui.pictureBox1.Invalidate();
+                Thread.Sleep(250);
+            }
+        }
+
+        public static System.Drawing.Bitmap worldchunk;
 
         public void LaunchInterface()
         {
@@ -100,6 +121,7 @@ namespace TSGui
 
         protected override void Dispose(bool disposing)
         {
+            isEnabled = false;
             if (disposing)
             {
                 ServerApi.Hooks.GamePostInitialize.Deregister(this, OnPostInitialize);
