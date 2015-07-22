@@ -91,8 +91,8 @@ namespace TSGui
             while(isEnabled)
             {
                 if(gui.TabControl.SelectedIndex == 1)
-                {   
-                    worldchunk = Map.API.Mapper.map(Terraria.Main.spawnTileX - 300, Terraria.Main.spawnTileY - 200, Terraria.Main.spawnTileX + 300, Terraria.Main.spawnTileY + 200);
+                {
+                    worldchunk = Map.API.Mapper.map(Terraria.Main.spawnTileX - (gui.pictureBox1.Width / 2), Terraria.Main.spawnTileY - (gui.pictureBox1.Height / 2), Terraria.Main.spawnTileX + (gui.pictureBox1.Width / 2), Terraria.Main.spawnTileY + (gui.pictureBox1.Height / 2));
                     delegate_for_updating = new UpdateMapGui(updategui);
                     gui.pictureBox1.Invoke(delegate_for_updating);
                 }
