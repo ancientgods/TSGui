@@ -266,7 +266,7 @@ namespace TSGui
         #endregion
 
         private magnusi.FormSkin GuiSkin;
-        private magnusi.FlatTabControl TabControl;
+        public magnusi.FlatTabControl TabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private FlatListBox ListBoxUsernames;
         private FlatTextBox TextBox_Input;

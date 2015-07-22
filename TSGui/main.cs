@@ -76,20 +76,29 @@ namespace TSGui
             while (!mapupdatethread.IsAlive);
         }
 
+        public delegate void UpdateMapGui();
+        public UpdateMapGui delegate_for_updating;
+        public static System.Drawing.Bitmap worldchunk;
+
+        //this function runs in the UI thread because is is being invoked as a delegate.
+        public void updategui()
+        {
+            gui.pictureBox1.Image = (System.Drawing.Bitmap)worldchunk.Clone();
+        }
+
         void mapupdate()
         {
             while(isEnabled)
             {
-                gui.pictureBox1.Invalidate();
-                gui.pictureBox1.IsAccessible = false;
-                worldchunk = Map.API.Mapper.map(Terraria.Main.spawnTileX - 300, Terraria.Main.spawnTileY - 200, Terraria.Main.spawnTileX + 300, Terraria.Main.spawnTileY + 200);
-                gui.pictureBox1.IsAccessible = true;
-                gui.pictureBox1.Invalidate();
+                if(gui.TabControl.SelectedIndex == 1)
+                {   
+                    worldchunk = Map.API.Mapper.map(Terraria.Main.spawnTileX - 300, Terraria.Main.spawnTileY - 200, Terraria.Main.spawnTileX + 300, Terraria.Main.spawnTileY + 200);
+                    delegate_for_updating = new UpdateMapGui(updategui);
+                    gui.pictureBox1.Invoke(delegate_for_updating);
+                }
                 Thread.Sleep(250);
             }
         }
-
-        public static System.Drawing.Bitmap worldchunk;
 
         public void LaunchInterface()
         {

@@ -82,8 +82,6 @@ namespace TSGui
             Console.SetIn(main.ConsoleInput); //Redirect console input to textbox
 
             ListBoxUsernames.ListBoxSkin.MouseDoubleClick += ListBoxUsernames_MouseDoubleClick; //Add here because the designer removes the code (because of the .ListBX).
-            pictureBox1.Paint += new PaintEventHandler(MapRedraw);
-            //this.Controls.Add(pictureBox1);
         }
 
         #region Hooks
