@@ -86,6 +86,7 @@ namespace TSGui
             pictureBox1.MouseUp += new MouseEventHandler(pictureBox1_MouseUp);
             pictureBox1.MouseMove += new MouseEventHandler(pictureBox1_MouseMove);
             pictureBox1.MouseWheel += new MouseEventHandler(pictureBox1_MouseWheel);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private bool dragging = false;
@@ -116,33 +117,7 @@ namespace TSGui
                 temp_y_offset += (start.Y - e.Y);
                 start = e.Location;
 
-                int leftx = Terraria.Main.spawnTileX - (pictureBox1.Width / 2) + temp_x_offset;
-                int topy = Terraria.Main.spawnTileY - (pictureBox1.Height / 2) + temp_y_offset;
-                int rightx = Terraria.Main.spawnTileX + (pictureBox1.Width / 2) + temp_x_offset;
-                int bottomy = Terraria.Main.spawnTileY + (pictureBox1.Height / 2) + temp_y_offset;
-
-                //x bounds
-                if(leftx < 2)
-                {
-                    temp_x_offset = -(Terraria.Main.spawnTileX - (pictureBox1.Width / 2)) + 2;
-                }
-                if(rightx > Terraria.Main.maxTilesX)
-                {
-                    temp_x_offset = Terraria.Main.maxTilesX - (Terraria.Main.spawnTileX + (pictureBox1.Width / 2))+1;
-                }
-
-                //y bounds
-                if(topy < 1)
-                {
-                    temp_y_offset = -(Terraria.Main.spawnTileY - (pictureBox1.Height / 2)) + 1;
-                }
-                if(bottomy > Main.maxTilesY)
-                {
-                    temp_y_offset = Terraria.Main.maxTilesY - (Terraria.Main.spawnTileY + (pictureBox1.Height / 2))+1;
-                }
-
-                main.x_offset = temp_x_offset;
-                main.y_offset = temp_y_offset;
+                check_bounds(temp_x_offset, temp_y_offset);
             }
         }
 
@@ -157,11 +132,50 @@ namespace TSGui
                 main.zoom_offset--;
             }
 
-            if(main.zoom_offset < 0)
+            if(main.zoom_offset < 1)
             {
-                main.zoom_offset = 0;
+                main.zoom_offset = 1;
             }
-            Console.WriteLine("zoom_offset" + main.zoom_offset);
+            if(main.zoom_offset > 4)
+            {
+                main.zoom_offset = 4;
+            }
+
+            check_bounds(main.x_offset, main.y_offset);
+        }
+
+        public void check_bounds(int temp_x_offset, int temp_y_offset)
+        {
+            int imagecenter_x = Terraria.Main.spawnTileX + temp_x_offset;
+            int imagecenter_y = Terraria.Main.spawnTileY + temp_y_offset;
+
+            main.x1 = imagecenter_x - ((pictureBox1.Width / 2) / main.zoom_offset);
+            main.y1 = imagecenter_y - ((pictureBox1.Height / 2) / main.zoom_offset);
+            main.x2 = imagecenter_x + ((pictureBox1.Width / 2) / main.zoom_offset);
+            main.y2 = imagecenter_y + ((pictureBox1.Height / 2) / main.zoom_offset);
+
+            //x bounds
+            if (main.x1 < 2)
+            {
+                temp_x_offset = -(Terraria.Main.spawnTileX - (pictureBox1.Width / (2 * main.zoom_offset))) + 2;
+            }
+            if (main.x2 >= Terraria.Main.maxTilesX)
+            {
+                temp_x_offset = Terraria.Main.maxTilesX - (Terraria.Main.spawnTileX + (pictureBox1.Width / (2 * main.zoom_offset))) - 1;
+            }
+
+            //y bounds
+            if (main.y1 < 1)
+            {
+                temp_y_offset = -(Terraria.Main.spawnTileY - (pictureBox1.Height / (2 * main.zoom_offset))) + 1;
+            }
+            if (main.y2 >= Main.maxTilesY)
+            {
+                temp_y_offset = Terraria.Main.maxTilesY - (Terraria.Main.spawnTileY + (pictureBox1.Height / (2*main.zoom_offset))) - 1;
+            }
+
+            main.x_offset = temp_x_offset;
+            main.y_offset = temp_y_offset;
         }
 
         #region Hooks
