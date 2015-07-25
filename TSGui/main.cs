@@ -123,6 +123,10 @@ namespace TSGui
                 if (gui.isMapTabSelected() && !mutex)
                 {
                     gui.check_bounds(x_offset,y_offset);
+                    if(worldchunk != null)
+                    {
+                        worldchunk.Dispose();
+                    }
                     worldchunk = Map.API.Mapper.map(x1, y1, x2, y2);
 
                     delegate_for_updating = new UpdateMapGui(updategui);
