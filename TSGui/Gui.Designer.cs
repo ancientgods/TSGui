@@ -44,6 +44,7 @@ namespace TSGui
             this.TextBoxConsoleOutput = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.GuiSkin.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -121,6 +122,7 @@ namespace TSGui
             this.TabControl.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
             this.TabControl.Controls.Add(this.tabPage1);
             this.TabControl.Controls.Add(this.tabPage2);
+            this.TabControl.Controls.Add(this.tabPage3);
             this.TabControl.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.TabControl.ItemSize = new System.Drawing.Size(120, 40);
             this.TabControl.Location = new System.Drawing.Point(0, 48);
@@ -230,15 +232,25 @@ namespace TSGui
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(800, 365);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Map";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(46, 38);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(708, 291);
+            this.pictureBox1.Size = new System.Drawing.Size(784, 353);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tabPage3.Location = new System.Drawing.Point(4, 44);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(800, 365);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
             // 
             // Gui
             // 
@@ -279,6 +291,7 @@ namespace TSGui
         private FlatContextMenuStrip ListBoxUsernamesContextMenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         public System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabPage tabPage3;
 
 
     }

@@ -41,6 +41,18 @@ namespace TSGui
         public const int SW_HIDE = 0;
         public const int SW_SHOW = 5;
         public bool isEnabled = true;
+        private delegate void UpdateMapGui();
+        private UpdateMapGui delegate_for_updating;
+        private static System.Drawing.Bitmap worldchunk;
+        private static volatile bool mutex = false;
+        public static volatile int x_offset = 0;
+        public static volatile int y_offset = 0;
+        public static volatile int zoom_offset = 1;
+        public static volatile int x1 = Terraria.Main.spawnTileX + x_offset - 600;
+        public static volatile int y1 = Terraria.Main.spawnTileX + y_offset - 600;
+        public static volatile int x2 = Terraria.Main.spawnTileX + x_offset + 600;
+        public static volatile int y2 = Terraria.Main.spawnTileX + y_offset + 600;
+
         public override Version Version
         {
             get { return Assembly.GetExecutingAssembly().GetName().Version; }
@@ -76,46 +88,30 @@ namespace TSGui
             while (!mapupdatethread.IsAlive);
         }
 
+        //this function runs in the UI thread because is is being invoked as a delegate.
+        public void updategui()
+        {
+            mutex = true;
+            gui.pictureBox1.Image = (System.Drawing.Bitmap)worldchunk.Clone();
+            mutex = false;
+        }
 
-
-        //mapping update code.
-            public delegate void UpdateMapGui();
-            public UpdateMapGui delegate_for_updating;
-            public static System.Drawing.Bitmap worldchunk;
-            public static volatile int x_offset = 0;
-            public static volatile int y_offset = 0;
-            public static volatile int zoom_offset = 1;
-            public static volatile int x1 = Terraria.Main.spawnTileX + x_offset - 600;
-            public static volatile int y1 = Terraria.Main.spawnTileX + y_offset - 600;
-            public static volatile int x2 = Terraria.Main.spawnTileX + x_offset + 600;
-            public static volatile int y2 = Terraria.Main.spawnTileX + y_offset + 600;
-            public static volatile bool mutex = false;
-
-            //this function runs in the UI thread because is is being invoked as a delegate.
-            public void updategui()
+        //this is running in the Map Update Thread.
+        void mapupdate()
+        {
+            while(isEnabled)
             {
-                mutex = true;
-                gui.pictureBox1.Image = (System.Drawing.Bitmap)worldchunk.Clone();
-                mutex = false;
-            }
-
-            void mapupdate()
-            {
-                while(isEnabled)
+                if(gui.TabControl.SelectedIndex == 1 && !mutex)
                 {
-                    if(gui.TabControl.SelectedIndex == 1 && !mutex)
-                    {
-                        gui.check_bounds(x_offset,y_offset);
-                        worldchunk = Map.API.Mapper.map(x1, y1, x2, y2);
+                    gui.check_bounds(x_offset,y_offset);
+                    worldchunk = Map.API.Mapper.map(x1, y1, x2, y2);
 
-                        delegate_for_updating = new UpdateMapGui(updategui);
-                        gui.pictureBox1.Invoke(delegate_for_updating);
-                    }
-                    Thread.Sleep(10);
+                    delegate_for_updating = new UpdateMapGui(updategui);
+                    gui.pictureBox1.Invoke(delegate_for_updating);
                 }
+                Thread.Sleep(10);
             }
-        //end mappping update code.
-
+        }
 
         public void LaunchInterface()
         {
