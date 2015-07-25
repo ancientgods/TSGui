@@ -27,8 +27,6 @@ using Terraria;
 using TerrariaApi.Server;
 using TSGui.Extensions;
 using magnusi;
-using Map.API;
-
 
 namespace TSGui
 {
@@ -289,6 +287,21 @@ namespace TSGui
 
             main.x_offset = temp_x_offset;
             main.y_offset = temp_y_offset;
+        }
+
+        public void removeInfoBox()
+        {
+            mapTabInfo.Visible = false;
+        }
+
+        public void removeMapTab()
+        {
+            TabControl.TabPages.Remove(tabPage2);
+        }
+
+        public bool isMapTabSelected()
+        {
+            return (TabControl.SelectedIndex == 1);
         }
     }
 }

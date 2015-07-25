@@ -43,9 +43,10 @@ namespace TSGui
             this.TextBox_Input = new magnusi.FlatTextBox();
             this.TextBoxConsoleOutput = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.mapTabInfo = new magnusi.FlatLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.TbInfo = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.GuiSkin.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -228,6 +229,7 @@ namespace TSGui
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tabPage2.Controls.Add(this.mapTabInfo);
             this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Name = "tabPage2";
@@ -235,6 +237,23 @@ namespace TSGui
             this.tabPage2.Size = new System.Drawing.Size(800, 365);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Map";
+            // 
+            // mapTabInfo
+            // 
+            this.mapTabInfo.AutoSize = true;
+            this.mapTabInfo.BackColor = System.Drawing.Color.Transparent;
+            this.mapTabInfo.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.mapTabInfo.ForeColor = System.Drawing.Color.White;
+            this.mapTabInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mapTabInfo.Location = new System.Drawing.Point(47, 169);
+            this.mapTabInfo.Name = "mapTabInfo";
+            this.mapTabInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.mapTabInfo.Size = new System.Drawing.Size(687, 26);
+            this.mapTabInfo.TabIndex = 3;
+            this.mapTabInfo.Text = "Once the world is loaded, the map will be shown in this tab\r\nIf this tab disappea" +
+    "rs, then please download the Map Plugin and put it in the ServerPlugins director" +
+    "y, in order to enable this feature";
+            this.mapTabInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -247,23 +266,23 @@ namespace TSGui
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tabPage3.Controls.Add(this.TbInfo);
+            this.tabPage3.Controls.Add(this.textBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 44);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(800, 365);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "More";
             // 
-            // TbInfo
+            // textBox1
             // 
-            this.TbInfo.AutoSize = true;
-            this.TbInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TbInfo.Location = new System.Drawing.Point(29, 140);
-            this.TbInfo.Name = "TbInfo";
-            this.TbInfo.Size = new System.Drawing.Size(760, 76);
-            this.TbInfo.TabIndex = 0;
-            this.TbInfo.Text = resources.GetString("TbInfo.Text");
+            this.textBox1.Location = new System.Drawing.Point(105, 121);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(594, 100);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // Gui
             // 
@@ -283,6 +302,7 @@ namespace TSGui
             this.tabPage1.PerformLayout();
             this.ListBoxUsernamesContextMenu.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
@@ -293,7 +313,7 @@ namespace TSGui
         #endregion
 
         private magnusi.FormSkin GuiSkin;
-        public magnusi.FlatTabControl TabControl;
+        private magnusi.FlatTabControl TabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private FlatListBox ListBoxUsernames;
         private FlatTextBox TextBox_Input;
@@ -307,7 +327,8 @@ namespace TSGui
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         public System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label TbInfo;
+        private System.Windows.Forms.TextBox textBox1;
+        private FlatLabel mapTabInfo;
 
 
     }
