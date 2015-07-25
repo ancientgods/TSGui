@@ -43,12 +43,16 @@ namespace TSGui
             this.TextBox_Input = new magnusi.FlatTextBox();
             this.TextBoxConsoleOutput = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.TbInfo = new magnusi.FlatTextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.TbInfo = new System.Windows.Forms.Label();
             this.GuiSkin.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.ListBoxUsernamesContextMenu.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // GuiSkin
@@ -120,6 +124,7 @@ namespace TSGui
             this.TabControl.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
             this.TabControl.Controls.Add(this.tabPage1);
             this.TabControl.Controls.Add(this.tabPage2);
+            this.TabControl.Controls.Add(this.tabPage3);
             this.TabControl.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.TabControl.ItemSize = new System.Drawing.Size(120, 40);
             this.TabControl.Location = new System.Drawing.Point(0, 48);
@@ -223,28 +228,42 @@ namespace TSGui
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tabPage2.Controls.Add(this.TbInfo);
+            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(800, 365);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Map";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(8, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(784, 353);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tabPage3.Controls.Add(this.TbInfo);
+            this.tabPage3.Location = new System.Drawing.Point(4, 44);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(800, 365);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
             // 
             // TbInfo
             // 
-            this.TbInfo.BackColor = System.Drawing.Color.Transparent;
-            this.TbInfo.Location = new System.Drawing.Point(236, 111);
-            this.TbInfo.MaxLength = 32767;
-            this.TbInfo.Multiline = true;
+            this.TbInfo.AutoSize = true;
+            this.TbInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TbInfo.Location = new System.Drawing.Point(29, 140);
             this.TbInfo.Name = "TbInfo";
-            this.TbInfo.ReadOnly = true;
-            this.TbInfo.Size = new System.Drawing.Size(320, 129);
-            this.TbInfo.TabIndex = 1;
+            this.TbInfo.Size = new System.Drawing.Size(760, 76);
+            this.TbInfo.TabIndex = 0;
             this.TbInfo.Text = resources.GetString("TbInfo.Text");
-            this.TbInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.TbInfo.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.TbInfo.UseSystemPasswordChar = false;
             // 
             // Gui
             // 
@@ -264,6 +283,9 @@ namespace TSGui
             this.tabPage1.PerformLayout();
             this.ListBoxUsernamesContextMenu.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -271,19 +293,21 @@ namespace TSGui
         #endregion
 
         private magnusi.FormSkin GuiSkin;
-        private magnusi.FlatTabControl TabControl;
+        public magnusi.FlatTabControl TabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private FlatListBox ListBoxUsernames;
         private FlatTextBox TextBox_Input;
         private System.Windows.Forms.RichTextBox TextBoxConsoleOutput;
         private System.Windows.Forms.TabPage tabPage2;
-        private FlatTextBox TbInfo;
         private FlatLabel LabelPlayers;
         private FlatClose GuiClose;
         private FlatMax GuiMax;
         private FlatMini GuiMin;
         private FlatContextMenuStrip ListBoxUsernamesContextMenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label TbInfo;
 
 
     }

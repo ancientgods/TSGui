@@ -27,12 +27,16 @@ using Terraria;
 using TerrariaApi.Server;
 using TSGui.Extensions;
 using magnusi;
+using Map.API;
 
 
 namespace TSGui
 {
     public partial class Gui : Form
     {
+        private bool dragging = false;
+        private System.Drawing.Point start;
+
         public Gui()
         {
             InitializeComponent();
@@ -81,6 +85,11 @@ namespace TSGui
             Console.SetIn(main.ConsoleInput); //Redirect console input to textbox
 
             ListBoxUsernames.ListBoxSkin.MouseDoubleClick += ListBoxUsernames_MouseDoubleClick; //Add here because the designer removes the code (because of the .ListBX).
+            pictureBox1.MouseDown += new MouseEventHandler(pictureBox1_MouseDown);
+            pictureBox1.MouseUp += new MouseEventHandler(pictureBox1_MouseUp);
+            pictureBox1.MouseMove += new MouseEventHandler(pictureBox1_MouseMove);
+            pictureBox1.MouseWheel += new MouseEventHandler(pictureBox1_MouseWheel);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         #region Hooks
@@ -194,6 +203,92 @@ namespace TSGui
                 }
             }
             TextBoxConsoleOutput.Append("Failed to copy username to clipboard! (No item selected)");
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                dragging = true;
+                start = e.Location;
+            }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                int temp_x_offset = main.x_offset;
+                int temp_y_offset = main.y_offset;
+
+                temp_x_offset += (start.X - e.X);
+                temp_y_offset += (start.Y - e.Y);
+                start = e.Location;
+
+                check_bounds(temp_x_offset, temp_y_offset);
+            }
+        }
+
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                main.zoom_offset++;
+            }
+            else
+            {
+                main.zoom_offset--;
+            }
+
+            if (main.zoom_offset < 1)
+            {
+                main.zoom_offset = 1;
+            }
+            if (main.zoom_offset > 4)
+            {
+                main.zoom_offset = 4;
+            }
+
+            check_bounds(main.x_offset, main.y_offset);
+        }
+
+        public void check_bounds(int temp_x_offset, int temp_y_offset)
+        {
+            int imagecenter_x = Terraria.Main.spawnTileX + temp_x_offset;
+            int imagecenter_y = Terraria.Main.spawnTileY + temp_y_offset;
+
+            main.x1 = imagecenter_x - ((pictureBox1.Width / 2) / main.zoom_offset);
+            main.y1 = imagecenter_y - ((pictureBox1.Height / 2) / main.zoom_offset);
+            main.x2 = imagecenter_x + ((pictureBox1.Width / 2) / main.zoom_offset);
+            main.y2 = imagecenter_y + ((pictureBox1.Height / 2) / main.zoom_offset);
+
+            //x bounds
+            if (main.x1 < 2)
+            {
+                temp_x_offset = -(Terraria.Main.spawnTileX - (pictureBox1.Width / (2 * main.zoom_offset))) + 2;
+            }
+            if (main.x2 >= Terraria.Main.maxTilesX)
+            {
+                temp_x_offset = Terraria.Main.maxTilesX - (Terraria.Main.spawnTileX + (pictureBox1.Width / (2 * main.zoom_offset))) - 1;
+            }
+
+            //y bounds
+            if (main.y1 < 1)
+            {
+                temp_y_offset = -(Terraria.Main.spawnTileY - (pictureBox1.Height / (2 * main.zoom_offset))) + 1;
+            }
+            if (main.y2 >= Main.maxTilesY)
+            {
+                temp_y_offset = Terraria.Main.maxTilesY - (Terraria.Main.spawnTileY + (pictureBox1.Height / (2 * main.zoom_offset))) - 1;
+            }
+
+            main.x_offset = temp_x_offset;
+            main.y_offset = temp_y_offset;
         }
     }
 }
