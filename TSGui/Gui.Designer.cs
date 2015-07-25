@@ -45,12 +45,14 @@ namespace TSGui
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.TbInfo = new System.Windows.Forms.Label();
             this.GuiSkin.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.ListBoxUsernamesContextMenu.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // GuiSkin
@@ -245,12 +247,23 @@ namespace TSGui
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tabPage3.Controls.Add(this.TbInfo);
             this.tabPage3.Location = new System.Drawing.Point(4, 44);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(800, 365);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
+            // 
+            // TbInfo
+            // 
+            this.TbInfo.AutoSize = true;
+            this.TbInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TbInfo.Location = new System.Drawing.Point(29, 140);
+            this.TbInfo.Name = "TbInfo";
+            this.TbInfo.Size = new System.Drawing.Size(760, 76);
+            this.TbInfo.TabIndex = 0;
+            this.TbInfo.Text = resources.GetString("TbInfo.Text");
             // 
             // Gui
             // 
@@ -271,6 +284,8 @@ namespace TSGui
             this.ListBoxUsernamesContextMenu.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -292,6 +307,7 @@ namespace TSGui
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         public System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label TbInfo;
 
 
     }
