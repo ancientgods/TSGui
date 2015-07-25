@@ -28,9 +28,10 @@ namespace TSGui
     {
         public static string GetTitle(bool empty)
         {
+            var playcount = TShock.Players.Where(p => p != null && p.Active).Count();
             return string.Format("{0}{1}/{2} @ {3}:{4} (TShock for Terraria v{5}) - TSGui by Ancientgods & magnusi",
                         !string.IsNullOrWhiteSpace(TShock.Config.ServerName) ? TShock.Config.ServerName + " - " : "",
-                        empty ? 0 : TShock.Utils.ActivePlayers(),
+                        empty ? 0 : playcount,
                         TShock.Config.MaxSlots, Netplay.ServerIP.ToString(), Netplay.ListenPort, TShock.VersionNum);
         }
     }

@@ -25,7 +25,7 @@ using TSGui.Extensions;
 
 namespace TSGui
 {
-    [ApiVersion(1, 19)]
+    [ApiVersion(1, 20)]
     public class main : TerrariaPlugin
     {
         Gui gui;
