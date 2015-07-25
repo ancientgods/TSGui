@@ -25,7 +25,7 @@ using TSGui.Extensions;
 
 namespace TSGui
 {
-    [ApiVersion(1, 19)]
+    [ApiVersion(1, 20)]
     public class main : TerrariaPlugin
     {
         Gui gui;
@@ -79,24 +79,32 @@ namespace TSGui
         public delegate void UpdateMapGui();
         public UpdateMapGui delegate_for_updating;
         public static System.Drawing.Bitmap worldchunk;
+        public static volatile int x_offset = 0;
+        public static volatile int y_offset = 0;
+        public static volatile int zoom_offset = 0;
+
+        public static volatile bool mutex = false;
 
         //this function runs in the UI thread because is is being invoked as a delegate.
         public void updategui()
         {
+            mutex = true;
             gui.pictureBox1.Image = (System.Drawing.Bitmap)worldchunk.Clone();
+            mutex = false;
         }
 
         void mapupdate()
         {
             while(isEnabled)
             {
-                if(gui.TabControl.SelectedIndex == 1)
+                if(gui.TabControl.SelectedIndex == 1 && !mutex)
                 {
-                    worldchunk = Map.API.Mapper.map(Terraria.Main.spawnTileX - (gui.pictureBox1.Width / 2), Terraria.Main.spawnTileY - (gui.pictureBox1.Height / 2), Terraria.Main.spawnTileX + (gui.pictureBox1.Width / 2), Terraria.Main.spawnTileY + (gui.pictureBox1.Height / 2));
+                    worldchunk = Map.API.Mapper.map(Terraria.Main.spawnTileX - (gui.pictureBox1.Width / 2) + x_offset, Terraria.Main.spawnTileY - (gui.pictureBox1.Height / 2) + y_offset, Terraria.Main.spawnTileX + (gui.pictureBox1.Width / 2) + x_offset, Terraria.Main.spawnTileY + (gui.pictureBox1.Height / 2) + y_offset);
+
                     delegate_for_updating = new UpdateMapGui(updategui);
                     gui.pictureBox1.Invoke(delegate_for_updating);
                 }
-                Thread.Sleep(250);
+                Thread.Sleep(10);
             }
         }
 

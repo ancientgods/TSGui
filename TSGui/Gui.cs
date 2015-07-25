@@ -82,6 +82,86 @@ namespace TSGui
             Console.SetIn(main.ConsoleInput); //Redirect console input to textbox
 
             ListBoxUsernames.ListBoxSkin.MouseDoubleClick += ListBoxUsernames_MouseDoubleClick; //Add here because the designer removes the code (because of the .ListBX).
+            pictureBox1.MouseDown += new MouseEventHandler(pictureBox1_MouseDown);
+            pictureBox1.MouseUp += new MouseEventHandler(pictureBox1_MouseUp);
+            pictureBox1.MouseMove += new MouseEventHandler(pictureBox1_MouseMove);
+            pictureBox1.MouseWheel += new MouseEventHandler(pictureBox1_MouseWheel);
+        }
+
+        private bool dragging = false;
+        System.Drawing.Point start;
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                dragging = true;
+                start = e.Location;
+            }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(dragging)
+            {
+                int temp_x_offset = main.x_offset;
+                int temp_y_offset = main.y_offset;
+
+                temp_x_offset += (start.X - e.X);
+                temp_y_offset += (start.Y - e.Y);
+                start = e.Location;
+
+                int leftx = Terraria.Main.spawnTileX - (pictureBox1.Width / 2) + temp_x_offset;
+                int topy = Terraria.Main.spawnTileY - (pictureBox1.Height / 2) + temp_y_offset;
+                int rightx = Terraria.Main.spawnTileX + (pictureBox1.Width / 2) + temp_x_offset;
+                int bottomy = Terraria.Main.spawnTileY + (pictureBox1.Height / 2) + temp_y_offset;
+
+                //x bounds
+                if(leftx < 2)
+                {
+                    temp_x_offset = -(Terraria.Main.spawnTileX - (pictureBox1.Width / 2)) + 2;
+                }
+                if(rightx > Terraria.Main.maxTilesX)
+                {
+                    temp_x_offset = Terraria.Main.maxTilesX - (Terraria.Main.spawnTileX + (pictureBox1.Width / 2))+1;
+                }
+
+                //y bounds
+                if(topy < 1)
+                {
+                    temp_y_offset = -(Terraria.Main.spawnTileY - (pictureBox1.Height / 2)) + 1;
+                }
+                if(bottomy > Main.maxTilesY)
+                {
+                    temp_y_offset = Terraria.Main.maxTilesY - (Terraria.Main.spawnTileY + (pictureBox1.Height / 2))+1;
+                }
+
+                main.x_offset = temp_x_offset;
+                main.y_offset = temp_y_offset;
+            }
+        }
+
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if(e.Delta > 0)
+            {
+                main.zoom_offset++;
+            }
+            else
+            {
+                main.zoom_offset--;
+            }
+
+            if(main.zoom_offset < 0)
+            {
+                main.zoom_offset = 0;
+            }
+            Console.WriteLine("zoom_offset" + main.zoom_offset);
         }
 
         #region Hooks
