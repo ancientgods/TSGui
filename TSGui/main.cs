@@ -40,7 +40,7 @@ namespace TSGui
 
         public const int SW_HIDE = 0;
         public const int SW_SHOW = 5;
-        public bool isEnabled = true;
+        public bool mapEnabled;
         private delegate void UpdateMapGui();
         private UpdateMapGui delegate_for_updating;
         private static System.Drawing.Bitmap worldchunk;
@@ -81,11 +81,30 @@ namespace TSGui
         public void OnPostInitialize(EventArgs e)
         {
             HasWorldInitialized = true;
-            Thread mapupdatethread;
-            mapupdatethread = new Thread(mapupdate);
-            mapupdatethread.Name = "Map Update Thread";
-            mapupdatethread.Start();
-            while (!mapupdatethread.IsAlive);
+
+            //check to see if the map plugin assembly has been loaded.
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            Assembly[] assems = currentDomain.GetAssemblies();
+            mapEnabled = false;
+            foreach (Assembly a in assems)
+            {
+                if (a.FullName.Contains("Map_TShock"))
+                {
+                    TShock.Log.Info("<TSGui> Found Map Plugin. Using Map.API.");
+                    mapEnabled = true;
+                    Thread mapupdatethread;
+                    mapupdatethread = new Thread(mapupdate);
+                    mapupdatethread.Name = "Map Update Thread";
+                    mapupdatethread.Start();
+                    while (!mapupdatethread.IsAlive) ;
+                    gui.removeInfoBox();
+                }
+            }
+
+            if(!mapEnabled)
+            {
+                gui.removeMapTab();
+            }
         }
 
         //this function runs in the UI thread because is is being invoked as a delegate.
@@ -99,9 +118,9 @@ namespace TSGui
         //this is running in the Map Update Thread.
         void mapupdate()
         {
-            while(isEnabled)
+            while(mapEnabled)
             {
-                if(gui.TabControl.SelectedIndex == 1 && !mutex)
+                if (gui.isMapTabSelected() && !mutex)
                 {
                     gui.check_bounds(x_offset,y_offset);
                     worldchunk = Map.API.Mapper.map(x1, y1, x2, y2);
@@ -143,7 +162,7 @@ namespace TSGui
 
         protected override void Dispose(bool disposing)
         {
-            isEnabled = false;
+            mapEnabled = false;
             if (disposing)
             {
                 ServerApi.Hooks.GamePostInitialize.Deregister(this, OnPostInitialize);
