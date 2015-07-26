@@ -175,7 +175,7 @@ namespace magnusi
 			if (flag)
 			{
 				Graphics arg_B7_0 = graphics;
-				string arg_B7_1 = "1";
+				string arg_B7_1 = "2";
 				Font arg_B7_2 = this.Font;
 				Brush arg_B7_3 = new SolidBrush(this.TextColor);
 				rectangle r = new rectangle (1, 1, this.Width, this.Height);
@@ -187,7 +187,7 @@ namespace magnusi
 				if (flag)
 				{
 					Graphics arg_10C_0 = graphics;
-					string arg_10C_1 = "2";
+					string arg_10C_1 = "1";
 					Font arg_10C_2 = this.Font;
 					Brush arg_10C_3 = new SolidBrush(this.TextColor);
 					rectangle r = new rectangle (1, 1, this.Width, this.Height);
