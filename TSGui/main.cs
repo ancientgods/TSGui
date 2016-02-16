@@ -110,6 +110,7 @@ namespace TSGui
         //this function runs in the UI thread because is is being invoked as a delegate.
         public void updategui()
         {
+            mutex = true;
             gui.pictureBox1.Image = (System.Drawing.Bitmap)worldchunk.Clone();
             mutex = false;
         }
@@ -122,12 +123,8 @@ namespace TSGui
                 if (gui.isMapTabSelected() && !mutex)
                 {
                     gui.check_bounds(x_offset,y_offset);
-                    if(worldchunk != null)
-                    {
-                        worldchunk.Dispose();
-                    }
                     worldchunk = Map.API.Mapper.map(x1, y1, x2, y2);
-                    mutex = true;
+
                     delegate_for_updating = new UpdateMapGui(updategui);
                     gui.pictureBox1.Invoke(delegate_for_updating);
                 }
